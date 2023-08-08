@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import livre.dao.excepion.DAOException;
 import livre.model.Readbooks;
 import livre.model.User;
@@ -15,6 +16,20 @@ public class ReadbooksDAO {
 	
 	// Connect to database
 	public static Connection getConnection() throws SQLException {
+		String DB_URL;
+		String DB_USER;
+		String DB_PASSWORD;
+
+		if (System.getenv("CI") != null) {
+			DB_URL = System.getenv("DB_URL");
+			DB_USER = System.getenv("DB_USER");
+			DB_PASSWORD = System.getenv("DB_PASSWORD");
+		} else {
+			Dotenv env = Dotenv.load();
+			DB_URL = env.get("DB_URL");
+			DB_USER = env.get("DB_USER");
+			DB_PASSWORD = env.get("DB_PASSWORD");
+		}
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/livre", "root", "123456");
 		return connection;
 	}
@@ -52,23 +67,32 @@ public class ReadbooksDAO {
 	    String updateQuery = "UPDATE readbooks SET imagelink = ?, pdflink = ?, category = ? WHERE bookname = ?";
 
 	    try (Connection connection = getConnection();
-	         PreparedStatement pst = connection.prepareStatement(updateQuery);) {
+	         PreparedStatement updatepst = connection.prepareStatement(updateQuery);) {
 
-	        pst.setString(1, readbooks.getImagelink());
-	        pst.setString(2, readbooks.getPdflink());
-	        pst.setString(3, readbooks.getCategory());
-	        pst.setString(4, readbooks.getBookname());
+	    	updatepst.setString(1, readbooks.getImagelink());
+	    	updatepst.setString(2, readbooks.getPdflink());
+	    	updatepst.setString(3, readbooks.getCategory());
+	    	updatepst.setString(4, readbooks.getBookname());
 
-	        int rows = pst.executeUpdate();
+	        int rows = updatepst.executeUpdate();
 
-	        return (rows > 0);
-
-	    } catch (SQLException e) {
-	        throw new DAOException(e);
-	    }
+	        return (rows == 1);
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
 	}
 
-
+	public static boolean DeleteBooks(int id) throws DAOException{
+		String deleteQuery = "DELETE FROM readbooks WHERE readbook_id = ?";
+		try(Connection connect = getConnection();
+			PreparedStatement deletePst = connect.prepareStatement(deleteQuery);){
+			deletePst.setInt(1, id);
+			int rows = deletePst.executeUpdate();
+			return (rows ==1);
+		}catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
 
 
 	

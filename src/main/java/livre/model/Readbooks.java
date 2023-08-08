@@ -49,6 +49,9 @@ public class Readbooks {
 	public Readbooks() {
 		// TODO Auto-generated constructor stub
 	}
+	public Readbooks(int readbook_id2, String bookname2, String imagelink2, int i, String category2) {
+		// TODO Auto-generated constructor stub
+	}
 	public void setCategory(String category) {
 		this.category = category;
 	}

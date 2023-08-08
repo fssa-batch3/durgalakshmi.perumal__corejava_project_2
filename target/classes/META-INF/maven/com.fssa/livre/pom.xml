@@ -7,14 +7,23 @@
 	<version>1.0.0</version>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
+		<java.version>17</java.version>
 		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		
+		<sonar.organization>fssa-batch3</sonar.organization>
+<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+<sonar.projectKey>fssa-batch3_durgalakshmi_perumal_corejava_project_2</sonar.projectKey>
 	</properties>
 
 
 	<dependencies>
-	
+	<!-- <https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv> -->
+<dependency>
+    <groupId>io.github.cdimascio</groupId>
+    <artifactId>java-dotenv</artifactId>
+    <version>5.2.2</version>
+</dependency>
 		<!-- JUnit Jupiter API for writing tests -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>

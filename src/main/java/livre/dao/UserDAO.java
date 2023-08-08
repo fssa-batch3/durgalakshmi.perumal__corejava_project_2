@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import livre.dao.excepion.DAOException;
 import livre.model.User;
 
@@ -15,6 +16,20 @@ public class UserDAO {
 
 	// Connect to database
 		public static Connection getConnection() throws SQLException {
+			String DB_URL;
+			String DB_USER;
+			String DB_PASSWORD;
+
+			if (System.getenv("CI") != null) {
+				DB_URL = System.getenv("DB_URL");
+				DB_USER = System.getenv("DB_USER");
+				DB_PASSWORD = System.getenv("DB_PASSWORD");
+			} else {
+				Dotenv env = Dotenv.load();
+				DB_URL = env.get("DB_URL");
+				DB_USER = env.get("DB_USER");
+				DB_PASSWORD = env.get("DB_PASSWORD");
+			}
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/livre", "root", "123456");
 			return connection;
 		}

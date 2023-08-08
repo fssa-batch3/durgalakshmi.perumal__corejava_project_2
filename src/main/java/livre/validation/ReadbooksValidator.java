@@ -57,4 +57,17 @@ public class ReadbooksValidator {
 		}
 		return isMatch;
 	}
+	
+	public static boolean validateId(int id) {
+		boolean match = true;
+		if(id > 0) {
+			System.out.println("The ID is valid");
+			match = true;
+		}
+		else if (id <= 0){	
+			System.out.println("The ID is Invalid");
+			match = false;
+		}
+		return match;
+	}
 }

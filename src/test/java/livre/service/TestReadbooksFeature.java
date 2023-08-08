@@ -1,4 +1,4 @@
-package livre.validations;
+package livre.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +12,7 @@ public class TestReadbooksFeature {
 @Test
 	public void testCreateProduct() {
 		ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(0, "moon", "imagelink-url", "pdf-link-url", "TRILLER");
+        Readbooks readbooks = new Readbooks(1, "you", "imagelink-url", "pdf-link-url", "TRILLER");
 		
 		try {
 			assertTrue(readbooksService.AddReadBooks(readbooks));
@@ -21,7 +21,16 @@ public class TestReadbooksFeature {
 			fail();
 		}
 	}
-
+@Test
+public void testNullProduct() { 
+	ReadbooksService productService = new ReadbooksService();
+	Readbooks product = null;
+	try {
+		assertFalse(productService.AddReadBooks(product));
+	} catch (ServiceException e) {
+		e.printStackTrace();
+	}
+}
 
 
 }

@@ -1,4 +1,4 @@
-package livre.validations;
+package livre.service;
 import static org.junit.jupiter.api.Assertions.*;
 import livre.model.User;
 import livre.services.exceptions.ServiceException;
