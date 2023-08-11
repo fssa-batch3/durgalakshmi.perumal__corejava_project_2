@@ -16,20 +16,20 @@ public class UserDAO {
 
 	// Connect to database
 		public static Connection getConnection() throws SQLException {
-			String DB_URL;
-			String DB_USER;
-			String DB_PASSWORD;
-
-			if (System.getenv("CI") != null) {
-				DB_URL = System.getenv("DB_URL");
-				DB_USER = System.getenv("DB_USER");
-				DB_PASSWORD = System.getenv("DB_PASSWORD");
-			} else {
-				Dotenv env = Dotenv.load();
-				DB_URL = env.get("DB_URL");
-				DB_USER = env.get("DB_USER");
-				DB_PASSWORD = env.get("DB_PASSWORD");
-			}
+//			String DB_URL;
+//			String DB_USER;
+//			String DB_PASSWORD;
+//
+//			if (System.getenv("CI") != null) {
+//				DB_URL = System.getenv("DB_URL");
+//				DB_USER = System.getenv("DB_USER");
+//				DB_PASSWORD = System.getenv("DB_PASSWORD");
+//			} else {
+//				Dotenv env = Dotenv.load();
+//				DB_URL = env.get("DB_URL");
+//				DB_USER = env.get("DB_USER");
+//				DB_PASSWORD = env.get("DB_PASSWORD");
+//			}
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/livre", "root", "123456");
 			return connection;
 		}
@@ -37,19 +37,27 @@ public class UserDAO {
 		
 		
 		// Get user from DB - Login
-		public boolean login(String email, String password) throws  DAOException {
-			String selectQuery = "SELECT * FROM user WHERE email = ? AND password = ?";
+		public User getUserByEmail(String email) throws  DAOException {
+			String selectQuery = "SELECT * FROM user WHERE email = ?";
 			try(Connection connection = getConnection();
 		    PreparedStatement pst = connection.prepareStatement(selectQuery); ){
 				pst.setString(1, email); 
-				pst.setString(2, password);
+//			
 				ResultSet rs = pst.executeQuery();
-				return rs.next();
+				
+				if(rs.next()) {
+					User user = new User();
+					user.setEmail(rs.getString("email"));
+					user.setPassword(rs.getString("password"));
+					
+					return user;
+				}
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+	
 			throw new DAOException(e);
 			}
+			return null;
 		}
 
 		// Add new user to DB - Register

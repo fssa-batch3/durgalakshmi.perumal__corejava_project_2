@@ -35,9 +35,6 @@ public class ReadbooksValidator {
 		}
 		return isMatch;
 	}
-	
-	
-	
 	public static boolean ValidateReadBookcategory(String category) {
 		boolean isMatch = false;
 		if(category == null)
@@ -57,7 +54,6 @@ public class ReadbooksValidator {
 		}
 		return isMatch;
 	}
-	
 	public static boolean validateId(int id) {
 		boolean match = true;
 		if(id > 0) {

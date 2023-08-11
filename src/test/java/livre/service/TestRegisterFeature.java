@@ -10,7 +10,7 @@ public class TestRegisterFeature {
 	@Test
 	public void testRegistrationSuccess() throws ServiceException {
 		UserService userService = new UserService();
-		User user = new User("hariharan@gmail.com", "@Hari123");
+		User user = new User("dddgalaks@gmail.com", "D@urg467");
 		try {
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {

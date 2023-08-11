@@ -1,4 +1,6 @@
 package livre.validation;
+import livre.dao.*;
+import livre.dao.excepion.DAOException;
 
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -15,15 +17,31 @@ public class UserValidator {
 			throw new InvalidUserException("User details is invalid");
 		}
 	}
+	//login
+	public static boolean validateLogin(String email, String password) throws InvalidUserException{
+		UserDAO userDAO = new UserDAO(); 
+		
+		 if (validateEmail(email) && validatePassword(password)) {
+		        try {
+		            User storedUser = userDAO.getUserByEmail(email);
+		            
+		            if (storedUser != null) {
+		                if (storedUser.getPassword().equals(password)) {
+		                    return true;  
+		                } else {
+		                    throw new InvalidUserException("Invalid password");
+		                }
+		            } else {
+		                throw new InvalidUserException("User not found");
+		            }
+		        } catch (DAOException e) {
+		            throw new InvalidUserException("Invalid login user details");
+		        }
+		    } 
+		 return false;
+		}
 	
-	public static boolean validLogin(String email, String password) throws InvalidUserException{
-		if(email != null && password != null && validateEmail(email) && validatePassword(password) ) {
-			return true;
-		}
-		else {
-			throw new InvalidUserException("Invalid login user details");
-		}
-	}
+	
 	public static boolean validatePassword(String password) {
 		boolean match = false;
 		if(password == null)
@@ -47,6 +65,9 @@ public class UserValidator {
 		}
 		return match;
 	}
+	
+	
+
 	public static boolean validateEmail(String email) {
 		boolean isMatch = false;
 		if(email == null)

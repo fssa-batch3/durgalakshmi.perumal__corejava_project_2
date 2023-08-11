@@ -12,7 +12,6 @@ public class TestLoginFeature {
 	@Test
 	public void testLoginSuccess() { 
 		UserService userService = new UserService();
-
 		try {
 			assertTrue(userService.loginUser("durga@gmail.com", "@Durga123"));
 		} catch (ServiceException e) {

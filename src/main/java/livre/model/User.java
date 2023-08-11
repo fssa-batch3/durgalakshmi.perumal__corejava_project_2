@@ -29,4 +29,8 @@ public class User {
 				+ super.toString() + "]";
 	}
 
+	
+	public User() {
+		
+	}
 }

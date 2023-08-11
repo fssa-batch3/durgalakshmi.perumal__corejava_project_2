@@ -32,19 +32,9 @@ public class UserService {
 	
 	public boolean loginUser(String email , String password) throws ServiceException {
 		
-		UserDAO userDAO = new UserDAO();
-		
 		try {
-			UserValidator.validLogin(email , password);
-			if (userDAO.login(email , password)) {
-				System.out.println(email + " successfully logged in ");
-				return true;}
-			else {
-				System.out.println("Logging in is not successful");
-				return false;
-			}
-			
-		}catch (DAOException | InvalidUserException e) {
+			return UserValidator.validateLogin(email , password);
+			}catch ( InvalidUserException e) {
 			throw new ServiceException(e);
 		}
 	}
