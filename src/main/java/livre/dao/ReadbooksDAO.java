@@ -36,7 +36,7 @@ public static Connection getConnection() throws SQLException {
 
 	
 	
-	public boolean READBOOKS(Readbooks readbooks) throws  DAOException {
+	public boolean ReadBooks(Readbooks readbooks) throws  DAOException {
 		String insertQuery = "INSERT INTO readbooks (bookname ,imagelink ,pdflink ,category) VALUES (?, ?, ?, ?)";
 
 		try(Connection connection = getConnection();
@@ -93,6 +93,8 @@ public static Connection getConnection() throws SQLException {
 			throw new DAOException(e);
 		}
 	}
+
+
 
 
 	

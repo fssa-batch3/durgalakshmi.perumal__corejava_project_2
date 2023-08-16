@@ -40,6 +40,34 @@ public class TestUpadteReadbooks {
     	}
     }
 
+    //null value
+    
+    @Test
+    public void testNullValue() {
+        ReadbooksService readbooksService = new ReadbooksService();
+        Readbooks readbooks = new Readbooks();
+        try {
+    		assertTrue(readbooksService.ReadbooksUpdate(readbooks));
+    	}catch(ServiceException e){
+    		e.printStackTrace();
+    		fail();
+    	}
+    }
+    
+    
+    // invalid book name 
+    
+    @Test
+    public void testInavlidBookName() {
+        ReadbooksService readbooksService = new ReadbooksService();
+        Readbooks readbooks = new Readbooks(40, "dum@hh", "imagelink-url", "pdf-link-url", "TRILLER");
+        try {
+    		assertTrue(readbooksService.ReadbooksUpdate(readbooks));
+    	}catch(ServiceException e){
+    		e.printStackTrace();
+    		fail();
+    	}
+    }
 }
 
 

@@ -21,7 +21,7 @@ public class ReadbooksService {
 		ReadbooksDAO Readbooks = new ReadbooksDAO(); 
 		try {
 			ReadbooksValidator.validRbooks(readbooks);
-			if (Readbooks.READBOOKS(readbooks)) {
+			if (Readbooks.ReadBooks(readbooks)) {
 				System.out.println("successfully added book");
 				return true;}
 			else {
