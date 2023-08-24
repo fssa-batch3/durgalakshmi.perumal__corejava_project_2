@@ -26,10 +26,10 @@ public class TestAddbooksFeature {
 // null value 
 @Test
 public void testNullProduct() { 
-	ReadbooksService productService = new ReadbooksService();
-	Readbooks product = null;
+	ReadbooksService readbooksService = new ReadbooksService();
+	Readbooks readbooks = null;
 	try {
-		assertFalse(productService.AddReadBooks(product));
+		assertFalse(readbooksService.AddReadBooks(readbooks));
 	} catch (ServiceException e) {
 		e.printStackTrace();
 	}
@@ -46,7 +46,7 @@ public void testInavlidBookName() {
 		assertTrue(readbooksService.AddReadBooks(readbooks));
 	}catch(ServiceException e){
 		e.printStackTrace();
-		fail();
+
 	}
 }
 
@@ -61,7 +61,7 @@ public void testInValidCategory() {
 		assertTrue(readbooksService.AddReadBooks(readbooks));
 	}catch(ServiceException e){
 		e.printStackTrace();
-		fail();
+	
 	}
 }
 

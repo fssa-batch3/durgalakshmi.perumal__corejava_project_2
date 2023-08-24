@@ -1,11 +1,13 @@
-C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\excepion\DAOException.java
-C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\UserDAO.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\services\ReadbooksService.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\validation\exceptions\InvalidUserException.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\validation\UserValidator.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\model\Readbooks.java
+C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\services\UserBookInteraction.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\services\UserService.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\ReadbooksDAO.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\model\User.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\services\exceptions\ServiceException.java
+C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\excepion\DAOException.java
+C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\UserBookInteractionDao.java
+C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\dao\UserDAO.java
 C:\Users\DurgalakshmiPerumal\eclipse-workspace\fssa_batch3\durgalakshmi.perumal__corejava_project_2\src\main\java\livre\validation\ReadbooksValidator.java

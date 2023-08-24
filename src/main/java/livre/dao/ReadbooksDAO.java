@@ -34,64 +34,85 @@ public static Connection getConnection() throws SQLException {
 		return connection;
 }
 
+	//AddReadBooks
 	
-	
-	public boolean ReadBooks(Readbooks readbooks) throws  DAOException {
-		String insertQuery = "INSERT INTO readbooks (bookname ,imagelink ,pdflink ,category) VALUES (?, ?, ?, ?)";
+public boolean addReadBooks(Readbooks readbooks) throws DAOException {
+    // SQL query to insert new book information into the readbooks table
+    String insertQuery = "INSERT INTO readbooks (bookname, imagelink, pdflink, category) VALUES (?, ?, ?, ?)";
 
-		try(Connection connection = getConnection();
-	    PreparedStatement pst = connection.prepareStatement(insertQuery); ){
-			pst.setString(1, readbooks.getBookname()); 
-			pst.setString(2, readbooks.getImagelink());
-			pst.setString(3, readbooks.getPdflink());
-			pst.setString(4, readbooks.getCategory());
-   
-			int rows = pst.executeUpdate();
+    try (Connection connection = getConnection();  // Establish a database connection
+         PreparedStatement pst = connection.prepareStatement(insertQuery);) {
+
+        // Set values for parameters in the prepared statement
+        pst.setString(1, readbooks.getBookname());  
+        pst.setString(2, readbooks.getImagelink());  
+        pst.setString(3, readbooks.getPdflink());    
+        pst.setString(4, readbooks.getCategory());    
+
+        // Execute the insert operation and get the number of affected rows
+        int rows = pst.executeUpdate();
+
+        // Check if exactly one row was inserted, and return true.
+        return (rows == 1);
+    } catch (SQLException e) {
+        // If a database exception occurs, wrap it in a custom DAOException and throw it
+        throw new DAOException(e);
+    }
+}
 
 	
-			return (rows == 1);
-			
-		} catch (SQLException e) {
-
-		throw new DAOException(e);
-		}
-	}
-
 	
 	
 	
-	
-	//update
+	//update ReadBooks
 	
 	public boolean updateBooks(Readbooks readbooks) throws DAOException {
+	    // SQL query to update book information based on the book name
 	    String updateQuery = "UPDATE readbooks SET imagelink = ?, pdflink = ?, category = ? WHERE bookname = ?";
 
-	    try (Connection connection = getConnection();
+	    try (Connection connection = getConnection();  // Establish a database connection
 	         PreparedStatement updatepst = connection.prepareStatement(updateQuery);) {
 
-	    	updatepst.setString(1, readbooks.getImagelink());
-	    	updatepst.setString(2, readbooks.getPdflink());
-	    	updatepst.setString(3, readbooks.getCategory());
-	    	updatepst.setString(4, readbooks.getBookname());
+	        // Set values for parameters in the prepared statement
+	        updatepst.setString(1, readbooks.getImagelink());  
+	        updatepst.setString(2, readbooks.getPdflink());    
+	        updatepst.setString(3, readbooks.getCategory());   
+	        updatepst.setString(4, readbooks.getBookname());   
 
+	        // Execute the update operation and get the number of affected rows
 	        int rows = updatepst.executeUpdate();
 
+	        // Check if exactly one row was updated, and return true if so
 	        return (rows == 1);
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
+	    } catch (SQLException e) {
+	        // If a database exception occurs, wrap it in a custom DAOException and throw it
+	        throw new DAOException(e);
+	    }
 	}
 
-	public static boolean DeleteBooks(int id) throws DAOException{
-		String deleteQuery = "DELETE FROM readbooks WHERE readbook_id = ?";
-		try(Connection connect = getConnection();
-			PreparedStatement deletePst = connect.prepareStatement(deleteQuery);){
-			deletePst.setInt(1, id);
-			int rows = deletePst.executeUpdate();
-			return (rows ==1);
-		}catch (SQLException e) {
-			throw new DAOException(e);
-		}
+	
+	
+	//DeleteReadBooks
+
+	public static boolean DeleteBooks(int id) throws DAOException {
+	    // Define the SQL query to delete a book entry with a specific id
+	    String deleteQuery = "DELETE FROM readbooks WHERE readbook_id = ?";
+
+	    try (Connection connect = getConnection();  // Establish a database connection
+	         PreparedStatement deletePst = connect.prepareStatement(deleteQuery);) {
+	        
+	        // Bind the id parameter to the prepared statement
+	        deletePst.setInt(1, id);
+	        
+	        // Execute the deletion operation and get the number of affected rows
+	        int rows = deletePst.executeUpdate();
+
+	        // Check if exactly one row was deleted, and return true 
+	        return (rows == 1);
+	    } catch (SQLException e) {
+	        // If a database exception occurs, wrap it in a custom DAOException and throw it
+	        throw new DAOException(e);
+	    }
 	}
 
 
