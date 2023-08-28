@@ -12,7 +12,7 @@ public class TestAddbooksFeature {
 @Test
 	public void testCreateProduct() {
 		ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(1, "you", "imagelink-url", "pdf-link-url", "TRILLER");
+        Readbooks readbooks = new Readbooks(7, "me", "imagelink-url", "pdf-link-url", "TRILLER");
 		
 		try {
 			assertTrue(readbooksService.AddReadBooks(readbooks));

@@ -8,11 +8,11 @@ public class UserBookInteraction {
         UserBookInteraction interactionService = new UserBookInteraction();
         interactionService.insertUserBookInteraction(userId, readBookId);
 
-        System.out.println("User-book interaction added successfully.");
+        System.out.println("Userbook interaction added successfully.");
     }
 
     private void insertUserBookInteraction(int userId, int readBookId) {
-        UserBookInteractionService interactionService = new UserBookInteractionService();
-        interactionService.addUserBookInteraction(userId, readBookId);
+//        UserBookInteractionService interactionService = new UserBookInteractionService();
+//        interactionService.addUserBookInteraction(userId, readBookId);
     }
 }

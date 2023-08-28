@@ -1,6 +1,6 @@
 package livre.service;
-import livre.dao.UserBookInteractionDao;
-import livre.services.UserBookInteraction;
+import livre.dao.UserBookInteractionDAO;
+//import livre.services.UserBookInteraction;
 
 
 public class UserBookInteraction {
@@ -15,7 +15,7 @@ public class UserBookInteraction {
     }
 
     private void insertUserBookInteraction(int userId, int readBookId) {
-        UserBookInteractionService addUserBookInteraction = new UserBookInteractionService();
-        addUserBookInteraction.addUserBookInteraction(userId, readBookId);
+//        UserBookInteractionService addUserBookInteraction = new UserBookInteractionService();
+//        addUserBookInteraction.addUserBookInteraction(userId, readBookId);
     }
 }

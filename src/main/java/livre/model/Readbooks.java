@@ -63,10 +63,10 @@ public class Readbooks {
     }
 
     public Readbooks(int readbook_id2, String bookname2, String imagelink2, int i, String category2) {
-        // Constructor with parameters, but not all parameters are used
+        // Constructor with parameter
     }
 
-    // Override toString method to provide a human-readable representation
+    // Override toString method 
     @Override
     public String toString() {
         return "Readbooks [bookname=" + bookname + ", imagelink=" + imagelink + ", pdflink=" + pdflink
