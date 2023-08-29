@@ -3,6 +3,7 @@ package livre.model;
 
 public class User {
 //getter and setters
+	private String userId;
 	private String email;
 	private String password;
 	public String getEmail() {
@@ -11,13 +12,19 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	//constructor
 	public User(String email, String password) {
 		super();
