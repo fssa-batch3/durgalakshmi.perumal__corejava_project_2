@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>livre</name>
+	<name>com.fssa.livre</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -35,7 +35,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1691640299015</id>
+			<id>0</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
