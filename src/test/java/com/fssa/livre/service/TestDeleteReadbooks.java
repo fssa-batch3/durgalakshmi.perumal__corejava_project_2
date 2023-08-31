@@ -24,7 +24,7 @@ public class TestDeleteReadbooks {
     public void testValidDelete() {
         // Assuming ID 12 exists in the database for testing.
         try {
-            assertTrue(readbooksService.ReadbooksDelete(2));
+            assertTrue(readbooksService.ReadbooksDelete(3));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for valid delete.");

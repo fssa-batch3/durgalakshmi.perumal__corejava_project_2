@@ -16,7 +16,7 @@ public class TestUpadteReadbooks {
     @Test
     public void testValidUpdate() {
     	ReadbooksService readbooksService = new ReadbooksService();
-    	Readbooks readbooks = new Readbooks(4, "Dream", "imagelink-url", "pdf-link-url", "TRILLER");
+    	Readbooks readbooks = new Readbooks(1, "Man", "imagelink-url", "pdf-link-url", "TRILLER");
     	try {
     		assertTrue(readbooksService.ReadbooksUpdate(readbooks));
     	}catch(ServiceException e){
