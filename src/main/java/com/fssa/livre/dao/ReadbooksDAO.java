@@ -99,7 +99,7 @@ public Readbooks getReadBooksById(int id) throws DAOException {
  * @throws DAOException If there is an issue with the database operation.
  */
 public boolean updateBooks(Readbooks readbooks) throws DAOException {
-    String updateQuery = "UPDATE readbooks SET bookname=?, imagelink = ?, pdflink = ?, category = ? WHERE readbook_id = ?";
+    String updateQuery = "UPDATE readbooks SET bookname=?, imagelink = ?, pdflink = ?, category = ? WHERE readbookid = ?";
 
     try (Connection connection = ConnectionDb.getConnection();
          PreparedStatement updatepst = connection.prepareStatement(updateQuery);) {
@@ -108,7 +108,7 @@ public boolean updateBooks(Readbooks readbooks) throws DAOException {
         updatepst.setString(2, readbooks.getImagelink());
         updatepst.setString(3, readbooks.getPdflink());
         updatepst.setString(4, readbooks.getCategory());
-        updatepst.setInt(5, readbooks.getReadbook_id());
+        updatepst.setInt(5, readbooks.getReadbookid());
 
         int rows = updatepst.executeUpdate();
 
@@ -129,8 +129,9 @@ public boolean updateBooks(Readbooks readbooks) throws DAOException {
  * @return True if the record was deleted successfully, false otherwise.
  * @throws DAOException If there is an issue with the database operation.
  */
-public static boolean DeleteBooks(int id) throws DAOException {
-    String deleteQuery = "DELETE FROM readbooks WHERE readbook_id = ?";
+
+public static boolean deleteBooks(int id) throws DAOException {
+    String deleteQuery = "DELETE FROM readbooks WHERE readbookid = ?";
 
     try (Connection connect = ConnectionDb.getConnection();
          PreparedStatement deletePst = connect.prepareStatement(deleteQuery);) {

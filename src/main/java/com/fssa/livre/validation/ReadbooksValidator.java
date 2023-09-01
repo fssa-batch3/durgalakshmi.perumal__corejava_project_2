@@ -23,7 +23,7 @@ public class ReadbooksValidator {
 	 */
 	public static boolean validEditRbooks(Readbooks readbooks) throws InvalidBooksException {
 		return readbooks != null && ValidateReadBookName(readbooks.getBookname())
-				&& ValidateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink()) && validateId(readbooks.getReadbook_id()) && validateReadBookPdf(readbooks.getPdflink()) ;
+				&& ValidateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink()) && validateId(readbooks.getReadbookid()) && validateReadBookPdf(readbooks.getPdflink()) ;
 		
 	}
 	

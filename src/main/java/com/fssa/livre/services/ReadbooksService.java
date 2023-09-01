@@ -1,16 +1,11 @@
 package com.fssa.livre.services;
 import java.util.List;
-import java.util.function.BooleanSupplier;
-
 import com.fssa.livre.dao.ReadbooksDAO;
-import com.fssa.livre.dao.UserDAO;
 import com.fssa.livre.dao.exception.DAOException;
 import com.fssa.livre.model.Readbooks;
-import com.fssa.livre.model.User;
 import com.fssa.livre.services.exceptions.ServiceException;
 import com.fssa.livre.validation.ReadbooksValidator;
 import com.fssa.livre.validation.exceptions.InvalidBooksException;
-import com.fssa.livre.validation.exceptions.InvalidUserException;
 
 public class ReadbooksService {
 
@@ -78,7 +73,7 @@ public class ReadbooksService {
         ReadbooksDAO DeleteBooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validateId(id);
-            if (ReadbooksDAO.DeleteBooks(id)) {
+            if (ReadbooksDAO.deleteBooks(id)) {
                 System.out.println("Product ID no " + id + " deleted Successfully");
                 return true;
             } else {

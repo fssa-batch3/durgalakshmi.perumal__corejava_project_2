@@ -1,7 +1,7 @@
 package com.fssa.livre.model;
 
 public class Readbooks {
-    private int readbook_id;
+    private int readbookid;
     private String bookname;
     private String imagelink;
     private String pdflink;
@@ -40,18 +40,18 @@ public class Readbooks {
         this.category = category;
     }
 
-    public int getReadbook_id() {
-        return readbook_id;
+    public int getReadbookid() {
+        return readbookid;
     }
 
-    public void getReadbook_id(int newBookId) {
-        this.readbook_id = newBookId;
+    public void getReadbookid(int newBookId) {
+        this.readbookid = newBookId;
     }
 
     // Constructors
-    public Readbooks(int readbook_id, String bookname, String imagelink, String pdflink, String category) {
+    public Readbooks(int readbookid, String bookname, String imagelink, String pdflink, String category) {
         super();
-        this.readbook_id = readbook_id;
+        this.readbookid = readbookid;
         this.bookname = bookname;
         this.imagelink = imagelink;
         this.pdflink = pdflink;
