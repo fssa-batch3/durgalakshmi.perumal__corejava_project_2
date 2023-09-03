@@ -8,11 +8,11 @@ import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestAddbooksFeature {
+public class TestCreateReadbooksFeature {
 @Test
 	public void testCreateProduct() {
 		ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(18, "Ohhh", "imagelink-url", "pdf-link-url", "ADVENTURE");
+        Readbooks readbooks = new Readbooks(18, "New me", "imagelink-url", "pdf-link-url", "ADVENTURE");
 		
 		try {
 			assertTrue(readbooksService.AddReadBooks(readbooks));

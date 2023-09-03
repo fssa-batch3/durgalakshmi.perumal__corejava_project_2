@@ -49,7 +49,7 @@ public class ReadbooksService {
     public boolean ReadbooksUpdate(Readbooks readbooks) throws ServiceException {
     	 ReadbooksDAO Readbooks = new ReadbooksDAO();
         try {
-            ReadbooksValidator.validRbooks(readbooks);
+            ReadbooksValidator.validEditRbooks(readbooks);
             if (Readbooks.updateBooks(readbooks)) {
                 System.out.println("ReadBooks " + readbooks.getBookname() + " Successfully Updated");
                 return true;
