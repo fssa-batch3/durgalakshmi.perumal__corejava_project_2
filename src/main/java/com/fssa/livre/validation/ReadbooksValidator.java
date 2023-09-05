@@ -1,6 +1,6 @@
 package com.fssa.livre.validation;
-
 import java.util.regex.Matcher;
+
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -10,6 +10,9 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
+
+
 
 public class ReadbooksValidator {
 
@@ -22,13 +25,13 @@ public class ReadbooksValidator {
 	 * @throws InvalidBooksException
 	 */
 	public static boolean validEditRbooks(Readbooks readbooks) throws InvalidBooksException {
-		return readbooks != null && ValidateReadBookName(readbooks.getBookname())
+		return readbooks != null && validateReadBookName(readbooks.getBookname())
 				&& ValidateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink()) && validateId(readbooks.getReadbookid()) && validateReadBookPdf(readbooks.getPdflink()) ;
 		
 	}
 	
 	public static boolean validRbooks(Readbooks readbooks) throws InvalidBooksException {
-		return readbooks != null && ValidateReadBookName(readbooks.getBookname())
+		return readbooks != null && validateReadBookName(readbooks.getBookname())
 				&& ValidateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink())  && validateReadBookPdf(readbooks.getPdflink()) ;
 		
 	}
@@ -39,26 +42,26 @@ public class ReadbooksValidator {
 	 * @param bookname The book name to be validated.
 	 * @return True if the book name is valid, false otherwise.
 	 */
-	public static boolean ValidateReadBookName(String bookname) throws InvalidBooksException {
 
-		if (bookname == null)
-			throw new InvalidBooksException("The book name should not be null");
-		if (bookname.trim().isEmpty()) {
-			throw new InvalidBooksException("The book name is should not be empty");
-		}
 
-		String regex = "^[A-Z a-z]{3,29}$";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(bookname);
-		boolean match = m.matches();
-		if (match) {
-			return true;
-		} else {
-			throw new InvalidBooksException(
-					"The book name can contain alphabetic values or numeric values and spaces");
-		}
+	public static boolean validateReadBookName(String bookname) throws InvalidBooksException {
+	    if (bookname == null) {
+	        throw new InvalidBooksException("The book name should not be null");
+	    }
+	    
+	    String trimmedBookName = bookname.trim();
+	    if (trimmedBookName.isEmpty()) {
+	        throw new InvalidBooksException("The book name should not be empty");
+	    }
 
+	    String regex = "^[A-Za-z0-9\\s]+$";  // Allow alphabetic characters, numeric characters, and spaces
+	    if (!trimmedBookName.matches(regex)) {
+	        throw new InvalidBooksException("The book name can only contain alphabetic characters, numeric characters, and spaces");
+	    }
+
+	    return true;
 	}
+
 	/**
 	 * @param pdfurl
 	 * @return

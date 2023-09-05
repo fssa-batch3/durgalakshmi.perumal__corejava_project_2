@@ -9,11 +9,7 @@ import com.fssa.livre.validation.exceptions.InvalidBooksException;
 
 public class ReadbooksService {
 
-    private ReadbooksDAO readbooksDAO;
 
-    public ReadbooksService() {
-        readbooksDAO = new ReadbooksDAO();
-    }
 
     /**
      * Adds a new readbook to the database.
@@ -87,7 +83,11 @@ public class ReadbooksService {
     
     
     
-    
+    /**
+     * 
+     * @return
+     * @throws ServiceException
+     */
     public List<Readbooks> getAllReadbooks() throws ServiceException {
         try {
             return ReadbooksDAO.getAllReadbooks(); // Assuming ReadbooksDAO.getAllReadbooks() returns List<Readbooks>
