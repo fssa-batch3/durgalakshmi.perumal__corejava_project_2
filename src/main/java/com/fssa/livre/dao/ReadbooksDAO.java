@@ -99,7 +99,7 @@ public Readbooks getReadBooksById(int id) throws DAOException {
  * @throws DAOException If there is an issue with the database operation.
  */
 public boolean updateBooks(Readbooks readbooks) throws DAOException {
-    String updateQuery = "UPDATE readbooks SET bookname=?, imagelink=?, pdflink=?, category=? WHERE readbookid=?";
+    String updateQuery = "UPDATE readbooks SET bookname=?, imagelink=?, pdflink=?, category=? WHERE readbook_id=?";
 
     try (Connection connection = ConnectionDb.getConnection();
          PreparedStatement updatepst = connection.prepareStatement(updateQuery);) {
@@ -130,8 +130,8 @@ public boolean updateBooks(Readbooks readbooks) throws DAOException {
  * @throws DAOException If there is an issue with the database operation.
  */
 
-public static boolean deleteBooks(int id) throws DAOException {
-    String deleteQuery = "DELETE FROM readbooks WHERE readbookid = ?";
+public boolean deleteBooks(int id) throws DAOException {
+    String deleteQuery = "DELETE FROM readbooks WHERE readbook_id = ?";
 
     try (Connection connect = ConnectionDb.getConnection();
          PreparedStatement deletePst = connect.prepareStatement(deleteQuery);) {

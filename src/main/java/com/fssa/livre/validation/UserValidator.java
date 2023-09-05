@@ -73,7 +73,7 @@ public class UserValidator {
             if (match) {
                 System.out.println("Valid password.");
             } else {
-                System.out.println("Invalid password.");
+                System.out.println("Invalid password - The password should contain at least one capital letter, one small letter, one special character, one number, and have a minimum length of 6 characters.");
             }
         } catch (PatternSyntaxException e) {
             System.out.println(e.getMessage());
@@ -97,7 +97,7 @@ public class UserValidator {
             if (isMatch) {
                 System.out.println("The email address is: Valid");
             } else {
-                System.out.println("The email address is: Invalid");
+                System.out.println("The email address you provided is invalid. Please make sure it follows the correct format (e.g., example@email.com).");
             }
             return isMatch;
         } catch (PatternSyntaxException e) {

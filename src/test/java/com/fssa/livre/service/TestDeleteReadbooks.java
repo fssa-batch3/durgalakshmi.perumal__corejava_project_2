@@ -4,41 +4,47 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
 import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestDeleteReadbooks {
+class TestDeleteReadbooks {
 
     private ReadbooksService readbooksService;
 
-    @BeforeEach
-    public void setUp() {
-        // Initialize your service before each test.
-        readbooksService = new ReadbooksService();
-    }
-
+    /**
+     * Test for a valid delete of a Readbooks record.
+     * 
+     * This test method assumes that the ID 11 exists in the database for testing.
+     * It attempts to delete the record and asserts that the deletion operation
+     * returns true, indicating a successful deletion.
+     */
     @Test
-    public void testValidDelete() {
-        // Assuming ID 12 exists in the database for testing.
+    void testValidDelete() {
         try {
-            assertTrue(readbooksService.ReadbooksDelete(2));
+            assertTrue(ReadbooksService.ReadbooksDelete(11));
         } catch (ServiceException e) {
             e.printStackTrace();
-            fail("ServiceException should not be thrown for valid delete.");
+            fail("ServiceException should not be thrown for a valid delete.");
         }
     }
 
+    /**
+     * Test for an invalid ID during Readbooks record deletion.
+     * 
+     * This test method assumes that the ID 40 does not exist in the database for
+     * testing. It attempts to delete a non-existent record and asserts that the
+     * deletion operation returns false, indicating that the record was not deleted.
+     */
     @Test
-    public void testInvalidIDDelete() {
-        // Assuming ID 40 does not exist in the database for testing.
+    void testInvalidIDDelete() {
         try {
             assertFalse(readbooksService.ReadbooksDelete(40));
         } catch (ServiceException e) {
             e.printStackTrace();
-            fail("ServiceException should not be thrown for invalid delete.");
+            fail("ServiceException should not be thrown for an invalid delete.");
         }
     }
 }

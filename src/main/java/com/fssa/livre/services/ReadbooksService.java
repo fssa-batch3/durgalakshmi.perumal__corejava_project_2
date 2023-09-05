@@ -65,11 +65,11 @@ public class ReadbooksService {
      * @return True if the readbook is deleted successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or deleting the readbook.
      */
-    public boolean ReadbooksDelete(int id) throws ServiceException {
+    public static boolean ReadbooksDelete(int id) throws ServiceException {
         ReadbooksDAO DeleteBooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validateId(id);
-            if (ReadbooksDAO.deleteBooks(id)) {
+            if (DeleteBooks.deleteBooks(id)) {
                 System.out.println("Product ID no " + id + " deleted Successfully");
                 return true;
             } else {
