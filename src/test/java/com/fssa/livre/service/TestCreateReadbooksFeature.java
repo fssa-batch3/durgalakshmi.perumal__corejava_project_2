@@ -8,9 +8,9 @@ import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestCreateReadbooksFeature {
+ class TestCreateReadbooksFeature {
 @Test
-	public void testCreateProduct() {
+	 void testCreateProduct() {
 		ReadbooksService readbooksService = new ReadbooksService();
         Readbooks readbooks = new Readbooks( "Are You", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRylgHc7awN5ANyCaYi4VP0xTyPtIClMP9mqg&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ADVENTURE");
 		
@@ -25,7 +25,7 @@ public class TestCreateReadbooksFeature {
 
 // null value 
 @Test
-public void testNullProduct() { 
+ void testNullProduct() { 
 	ReadbooksService readbooksService = new ReadbooksService();
 	Readbooks readbooks = null;
 	try {
@@ -38,7 +38,7 @@ public void testNullProduct() {
 // invalid book name 
 
 @Test
-public void testInavlidBookName() {
+void testInavlidBookName() {
 	ReadbooksService readbooksService = new ReadbooksService();
     Readbooks readbooks = new Readbooks(1, "1D@rk", "imagelink-url", "pdf-link-url", "TRILLER");
 	
@@ -53,7 +53,7 @@ public void testInavlidBookName() {
 // invalid category
 
 @Test
-public void testInValidCategory() {
+ void testInValidCategory() {
 	ReadbooksService readbooksService = new ReadbooksService();
     Readbooks readbooks = new Readbooks(1, "you", "imagelink-url", "pdf-link-url", "WOw");
 	

@@ -9,7 +9,7 @@ import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestUpadteReadbooks {
+ class TestUpadteReadbooks {
 
     /**
      * Test for a valid update of Readbooks.
@@ -19,7 +19,7 @@ public class TestUpadteReadbooks {
      * succeeds without exceptions.
      */
     @Test
-    public void testValidUpdate() {
+    void testValidUpdate() {
         ReadbooksService readbooksService = new ReadbooksService();
         Readbooks readbooks = new Readbooks(1, "HOUSE OF FURIES", "imagelink-url", "pdf-link-url", "TRILLER");
         
@@ -39,7 +39,7 @@ public class TestUpadteReadbooks {
      * update operation fails as expected by throwing a ServiceException.
      */
     @Test
-    public void testInValidUpdate() {
+   void testInValidUpdate() {
         ReadbooksService readbooksService = new ReadbooksService();
         Readbooks readbooks = new Readbooks(40, "Why Me?", "imagelink-url", "pdf-link-url", "TRILLER");
         
@@ -58,7 +58,7 @@ public class TestUpadteReadbooks {
      * fails as expected by throwing a ServiceException.
      */
     @Test
-    public void testNullValue() {
+    void testNullValue() {
         ReadbooksService readbooksService = new ReadbooksService();
         Readbooks readbooks = new Readbooks();
         
@@ -77,7 +77,7 @@ public class TestUpadteReadbooks {
      * operation fails as expected by throwing a ServiceException.
      */
     @Test
-    public void testInavlidBookName() {
+    void testInavlidBookName() {
         ReadbooksService readbooksService = new ReadbooksService();
         Readbooks readbooks = new Readbooks(40, "dum@hh", "imagelink-url", "pdf-link-url", "TRILLER");
         

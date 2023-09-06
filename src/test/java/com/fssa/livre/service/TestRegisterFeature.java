@@ -7,9 +7,9 @@ import com.fssa.livre.model.User;
 import com.fssa.livre.services.UserService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestRegisterFeature {
+ class TestRegisterFeature {
 	@Test
-	public void testRegistrationSuccess() throws ServiceException {
+	 void testRegistrationSuccess() throws ServiceException {
 		UserService userService = new UserService();
 		User user = new User("durg@gmail.com", "D@urg467");
 		try {
