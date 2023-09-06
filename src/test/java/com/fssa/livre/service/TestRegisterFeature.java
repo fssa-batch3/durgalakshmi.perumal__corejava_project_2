@@ -8,6 +8,15 @@ import com.fssa.livre.services.UserService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
  class TestRegisterFeature {
+	 
+	 /**
+	  * Tests successful user registration.
+	  * - Creates a UserService and a User with valid credentials.
+	  * - Asserts that registration succeeds.
+	  * - Fails the test if a ServiceException is thrown.
+	  *
+	  * @throws ServiceException If an unexpected error occurs during registration.
+	  */
 	@Test
 	 void testRegistrationSuccess() throws ServiceException {
 		UserService userService = new UserService();

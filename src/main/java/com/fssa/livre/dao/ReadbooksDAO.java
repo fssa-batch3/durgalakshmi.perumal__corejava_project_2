@@ -147,6 +147,46 @@ public boolean deleteBooks(int id) throws DAOException {
 }
 
 
+/**
+ * Searches for readbooks by category in the database.
+ *
+ * @param category The category to search for readbooks.
+ * @return A list of matching Readbooks objects.
+ * @throws DAOException If there is an issue with the database operation.
+ */
+public static List<Readbooks> searchReadbooksByCategory(String category) throws DAOException {
+    String searchQuery = "SELECT * FROM readbooks WHERE category = ?";
+    List<Readbooks> result = new ArrayList<>();
+
+    try (Connection connection = ConnectionDb.getConnection();
+         PreparedStatement pst = connection.prepareStatement(searchQuery);) {
+
+        pst.setString(1, category);
+
+        try (ResultSet resultSet = pst.executeQuery()) {
+            while (resultSet.next()) {
+                Readbooks readbooks = new Readbooks();
+                readbooks.setBookname(resultSet.getString("bookname"));
+                readbooks.setImagelink(resultSet.getString("imagelink"));
+                readbooks.setPdflink(resultSet.getString("pdflink"));
+                readbooks.setCategory(resultSet.getString("category"));
+                result.add(readbooks);
+            }
+        }
+    } catch (SQLException e) {
+        throw new DAOException(e);
+    }
+
+    return result;
+}
+
+
+/**
+ * Retrieves a list of all readbooks from the database.
+ *
+ * @return A list of Readbooks objects representing all readbooks.
+ * @throws DAOException If an error occurs while accessing the database.
+ */
 public static List<Readbooks> getAllReadbooks() throws DAOException {
     final String selectAllReadbooksQuery = "SELECT * FROM readbooks";
     List<Readbooks> readbooksList = new ArrayList<>();

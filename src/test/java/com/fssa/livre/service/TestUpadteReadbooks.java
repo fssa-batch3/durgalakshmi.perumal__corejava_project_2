@@ -21,7 +21,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
     void testValidUpdate() {
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(1, "HOUSE OF FURIES", "imagelink-url", "pdf-link-url", "TRILLER");
+        Readbooks readbooks = new Readbooks(14, "THE GRATE INDIA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn1ieFcEKKU92lY6DgNVWPHwnvrQM3oobrzQ&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "TRILLER");
         
         try {
             assertTrue(readbooksService.readbooksUpdate(readbooks));

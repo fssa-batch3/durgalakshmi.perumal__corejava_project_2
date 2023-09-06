@@ -9,6 +9,11 @@ import com.fssa.livre.services.*;
 import com.fssa.livre.services.exceptions.ServiceException;
 
 public class TestLoginFeature {
+	/**
+	 * This test method verifies a successful user login with valid email and password.
+	 * It uses UserService to attempt a login and asserts that it returns true.
+	 * If a ServiceException occurs, the test fails.
+	 */
 	@Test
 	public void testLoginSuccess() { 
 		UserService userService = new UserService();
@@ -21,7 +26,11 @@ public class TestLoginFeature {
 	}
 	
 	
-	//wrong password and email
+	/**
+	 * This test method verifies a login failure when both email and password are incorrect.
+	 * It uses UserService to attempt a login and asserts that it returns false.
+	 * If a ServiceException occurs, it is handled without failing the test.
+	 */
 	@Test
 	public void testLoginFailByBothFields() {
 		UserService userService = new UserService();
@@ -33,7 +42,13 @@ public class TestLoginFeature {
 		}
 		
 	}
-	//wrong email
+
+
+    /**
+    * This test method verifies a login failure when the email is incorrect.
+    * It uses UserService to attempt a login and asserts that it returns false.
+    * If a ServiceException occurs, it is handled without failing the test.
+    */
 	@Test
 	public void testLoginFailedByEmailField() {
 		UserService userService = new UserService();
@@ -44,7 +59,11 @@ public class TestLoginFeature {
 		
 		}
 	}
-	// wrong password
+	/**
+	 * This test method verifies a login failure when the password is incorrect.
+	 * It uses UserService to attempt a login and asserts that it returns false.
+	 * If a ServiceException occurs, it is handled without failing the test.
+	 */
 	@Test
 	public void testLoginFailedByPasswordField() {
 		UserService userService = new UserService();

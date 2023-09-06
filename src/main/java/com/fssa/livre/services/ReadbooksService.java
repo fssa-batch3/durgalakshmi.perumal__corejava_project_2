@@ -82,6 +82,31 @@ public class ReadbooksService {
     }
     
     
+    /**
+     * Searches for readbooks by category and returns a list of matching readbooks.
+     *
+     * @param category The category to search for readbooks.
+     * @return A list of matching readbooks.
+     * @throws ServiceException If an error occurs during the search process.
+     */
+    public List<Readbooks> searchReadbooksByCategory(String category) throws ServiceException {
+        try {
+          
+            List<Readbooks> searchResults = ReadbooksDAO.searchReadbooksByCategory(category); 
+
+            if (searchResults.isEmpty()) {
+                System.out.println("No readbooks found for the selected category");
+            } else {
+                System.out.println("Found " + searchResults.size() + " readbooks for the selected category");
+            }
+
+            return searchResults;
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    
     
     /**
      * 
