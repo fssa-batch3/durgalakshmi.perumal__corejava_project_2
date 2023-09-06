@@ -24,7 +24,7 @@ public class TestUpadteReadbooks {
         Readbooks readbooks = new Readbooks(1, "HOUSE OF FURIES", "imagelink-url", "pdf-link-url", "TRILLER");
         
         try {
-            assertTrue(readbooksService.ReadbooksUpdate(readbooks));
+            assertTrue(readbooksService.readbooksUpdate(readbooks));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail();
@@ -44,7 +44,7 @@ public class TestUpadteReadbooks {
         Readbooks readbooks = new Readbooks(40, "Why Me?", "imagelink-url", "pdf-link-url", "TRILLER");
         
         try {
-            assertFalse(readbooksService.ReadbooksUpdate(readbooks));
+            assertFalse(readbooksService.readbooksUpdate(readbooks));
         } catch (ServiceException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class TestUpadteReadbooks {
         Readbooks readbooks = new Readbooks();
         
         try {
-            assertFalse(readbooksService.ReadbooksUpdate(readbooks));
+            assertFalse(readbooksService.readbooksUpdate(readbooks));
         } catch (ServiceException e) {
             e.printStackTrace();
         }
@@ -82,7 +82,7 @@ public class TestUpadteReadbooks {
         Readbooks readbooks = new Readbooks(40, "dum@hh", "imagelink-url", "pdf-link-url", "TRILLER");
         
         try {
-            assertFalse(readbooksService.ReadbooksUpdate(readbooks));
+            assertFalse(readbooksService.readbooksUpdate(readbooks));
         } catch (ServiceException e) {
             e.printStackTrace();
         }

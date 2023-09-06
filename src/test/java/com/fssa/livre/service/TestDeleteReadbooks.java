@@ -24,7 +24,7 @@ class TestDeleteReadbooks {
     @Test
     void testValidDelete() {
         try {
-            assertTrue(ReadbooksService.ReadbooksDelete(11));
+            assertTrue(ReadbooksService.readbooksDelete(11));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for a valid delete.");
@@ -41,7 +41,7 @@ class TestDeleteReadbooks {
     @Test
     void testInvalidIDDelete() {
         try {
-            assertFalse(readbooksService.ReadbooksDelete(40));
+            assertFalse(readbooksService.readbooksDelete(40));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for an invalid delete.");

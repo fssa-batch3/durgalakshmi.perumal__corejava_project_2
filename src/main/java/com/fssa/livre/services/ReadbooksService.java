@@ -19,7 +19,7 @@ public class ReadbooksService {
      * @throws ServiceException If an error occurs while validating or adding the readbook.
      * @throws  
      */
-    public boolean AddReadBooks(Readbooks readbooks) throws ServiceException  {
+    public boolean addReadBooks(Readbooks readbooks) throws ServiceException  {
         ReadbooksDAO Readbooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validRbooks(readbooks);
@@ -42,7 +42,7 @@ public class ReadbooksService {
      * @return True if the readbook is updated successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or updating the readbook.
      */
-    public boolean ReadbooksUpdate(Readbooks readbooks) throws ServiceException {
+    public boolean readbooksUpdate(Readbooks readbooks) throws ServiceException {
     	 ReadbooksDAO Readbooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validEditRbooks(readbooks);
@@ -65,7 +65,7 @@ public class ReadbooksService {
      * @return True if the readbook is deleted successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or deleting the readbook.
      */
-    public static boolean ReadbooksDelete(int id) throws ServiceException {
+    public static boolean readbooksDelete(int id) throws ServiceException {
         ReadbooksDAO DeleteBooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validateId(id);
