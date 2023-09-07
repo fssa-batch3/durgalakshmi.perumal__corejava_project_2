@@ -18,9 +18,33 @@ public class ReadbooksDAO {
     private static final String PDFLINK_COLUMN = "pdflink";
     private static final String CATEGORY_COLUMN = "category";
     
-    private static Readbooks mapResultSetToBooks(ResultSet rs) {
-    	
-    }
+    private static Readbooks mapResultSetToBooks(ResultSet rs) {    	  
+    	Readbooks book = new Readbooks();
+    
+    	    try {
+				book.setBookname(rs.getString(BOOKNAME_COLUMN));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+    	    try {
+				book.setImagelink(rs.getString(IMAGELINK_COLUMN));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+    	    try {
+				book.setPdflink(rs.getString(PDFLINK_COLUMN));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+    	    try {
+				book.setCategory(rs.getString(CATEGORY_COLUMN));
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+    	    return book;
+    	}
+
+    
 	
 
 	//AddReadBooks 

@@ -6,6 +6,8 @@ import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.services.exceptions.ServiceException;
 import com.fssa.livre.validation.ReadbooksValidator;
 import com.fssa.livre.validation.exceptions.InvalidBooksException;
+import java.util.logging.Logger;
+
 
 public class ReadbooksService { 
 
@@ -24,10 +26,8 @@ public class ReadbooksService {
         try {
             ReadbooksValidator.validRbooks(readbooks);
             if (Readbooks.addReadBooks(readbooks)) { 
-                System.out.println("Successfully added book"); 
                 return true;
             } else {
-                System.out.println("Book is not added");
                 return false;
             }
         } catch (InvalidBooksException | DAOException e) {
@@ -47,10 +47,8 @@ public class ReadbooksService {
         try {
             ReadbooksValidator.validEditRbooks(readbooks);
             if (Readbooks.updateBooks(readbooks)) {
-                System.out.println("ReadBooks " + readbooks.getBookname() + " Successfully Updated");
                 return true;
             } else {
-                System.out.println("ReadBooks " + readbooks.getBookname() + " Not Updated");
                 return false;
             }
         } catch (InvalidBooksException | DAOException  e) {
@@ -70,10 +68,8 @@ public class ReadbooksService {
         try {
             ReadbooksValidator.validateId(id);
             if (DeleteBooks.deleteBooks(id)) {
-                System.out.println("Product ID no " + id + " deleted Successfully");
                 return true;
             } else {
-                System.out.println("Product ID no " + id + " unable to delete");
                 return false;
             }
         } catch (InvalidBooksException | DAOException e) {
@@ -89,22 +85,21 @@ public class ReadbooksService {
      * @return A list of matching readbooks.
      * @throws ServiceException If an error occurs during the search process.
      */
+    private static final Logger logger = Logger.getLogger(ReadbooksService.class.getName());
+
     public List<Readbooks> searchReadbooksByCategory(String category) throws ServiceException {
         try {
-          
-            List<Readbooks> searchResults = ReadbooksDAO.searchReadbooksByCategory(category); 
-
+            List<Readbooks> searchResults = ReadbooksDAO.searchReadbooksByCategory(category);
             if (searchResults.isEmpty()) {
-                System.out.println("No readbooks found for the selected category");
+                logger.info("No readbooks found for the selected category");
             } else {
-                System.out.println("Found " + searchResults.size() + " readbooks for the selected category");
+                logger.info("Found " + searchResults.size() + " readbooks for the selected category");
             }
-
             return searchResults;
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
-    } 
+    }
 
     
     

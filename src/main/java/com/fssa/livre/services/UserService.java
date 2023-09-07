@@ -21,12 +21,10 @@ public class UserService {
     public boolean registerUser(User user) throws ServiceException {
         UserDAO userDAO = new UserDAO();
         try {
-            UserValidator.validUser(user);
+            UserValidator.validUser(user); 
             if (userDAO.register(user)) {
-                System.out.println(user.getEmail() + " successfully added");
                 return true;
             } else {
-                System.out.println("Registration not successful");
                 return false;
             }
         } catch (DAOException | InvalidUserException e) {
