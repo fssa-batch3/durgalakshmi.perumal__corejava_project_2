@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.validation.UserValidator;
 import com.fssa.livre.validation.exceptions.InvalidUserException;
 
-public class TestEmail { 
+ class TestEmail { 
 	@Test
 //valid email
-	public void testValidEmail() {
+	 void testValidEmail() {
 		try {
 			assertTrue(UserValidator.validateEmail("durgalakshmi@gmail.com"));
 		} catch (InvalidUserException e) {
@@ -23,7 +23,7 @@ public class TestEmail {
 	// no special character in email
 @Test
 
-	public void testInvalidEmailMissingAt() { 
+	 void testInvalidEmailMissingAt() { 
 		try {
 			assertFalse(UserValidator.validateEmail("durgalaksgmail.com"));
 		} catch (InvalidUserException e) {
@@ -35,7 +35,7 @@ public class TestEmail {
 	// no dough in email
 @Test
 
-	public void testInvalidEmailMissingPeriod() {
+      void testInvalidEmailMissingPeriod() {
 		try {
 			assertFalse(UserValidator.validateEmail("durga@gmailcom"));
 		} catch (InvalidUserException e) {

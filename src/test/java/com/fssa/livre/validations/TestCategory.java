@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.validation.ReadbooksValidator;
 import com.fssa.livre.validation.exceptions.InvalidBooksException;
 
-public class TestCategory {
+ class TestCategory {
 	 // Valid book categories
     @Test
-    public void testValidBookCategories() {
+    void testValidBookCategories() {
         try {
             assertTrue(ReadbooksValidator.validateReadBookcategory("ADVENTURE"));
             assertTrue(ReadbooksValidator.validateReadBookcategory("THRILLER"));
@@ -30,7 +30,7 @@ public class TestCategory {
 
     // Invalid book category (not in predefined categories)
     @Test
-    public void testInvalidBookCategory() {
+     void testInvalidBookCategory() {
         try {
             assertFalse(ReadbooksValidator.validateReadBookcategory("SCIFI"));
         } catch (InvalidBooksException e) {
@@ -40,7 +40,7 @@ public class TestCategory {
 
     // Null book category
     @Test
-    public void testNullBookCategory() {
+    void testNullBookCategory() {
         assertThrows(InvalidBooksException.class, () -> {
         	ReadbooksValidator.validateReadBookcategory(null);
         });
@@ -48,7 +48,7 @@ public class TestCategory {
 
     // Empty book category
     @Test
-    public void testEmptyBookCategory() {
+    void testEmptyBookCategory() {
         assertThrows(InvalidBooksException.class, () -> {
         	ReadbooksValidator.validateReadBookcategory("");
         });

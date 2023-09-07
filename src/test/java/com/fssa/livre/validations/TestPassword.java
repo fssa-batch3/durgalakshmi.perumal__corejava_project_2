@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.validation.UserValidator;
 import com.fssa.livre.validation.exceptions.InvalidUserException;
 
-public class TestPassword {
+ class TestPassword {
 	//valid password
 		@Test
-		public void testValidPassword() {
+		 void testValidPassword() {
 			try {
 				assertTrue(UserValidator.validatePassword("Durga@123"));
 			} catch (InvalidUserException e) {
@@ -21,7 +21,7 @@ public class TestPassword {
 		} 
 	//without SpecialCharacters
 		@Test 
-		public void testInvalidPasswordWithoutSpecialCharacters() {
+		 void testInvalidPasswordWithoutSpecialCharacters() {
 			try {
 				assertFalse(UserValidator.validatePassword("Durga23"));
 			} catch (InvalidUserException e) {
@@ -32,7 +32,7 @@ public class TestPassword {
 		}
 	//Password  Without Numbers
 		@Test
-		public void testInvalidPasswordWithoutNumbers() {
+		 void testInvalidPasswordWithoutNumbers() {
 			try {
 				assertFalse(UserValidator.validatePassword("Durga@"));
 			} catch (InvalidUserException e) {
@@ -43,7 +43,7 @@ public class TestPassword {
 		}
 	//Password Without CapitalLetters
 		@Test 
-		public void testInvalidPasswordWithoutCapitalLetters() {
+		 void testInvalidPasswordWithoutCapitalLetters() {
 			try {
 				assertFalse(UserValidator.validatePassword("durga@123"));
 			} catch (InvalidUserException e) {
@@ -54,7 +54,7 @@ public class TestPassword {
 		}
 	//Password Without SmallLetters
 		@Test
-		public void testInvalidPasswordWithoutSmallLetters() {
+		 void testInvalidPasswordWithoutSmallLetters() {
 			try {
 				assertFalse(UserValidator.validatePassword("DURGA@123"));
 			} catch (InvalidUserException e) {

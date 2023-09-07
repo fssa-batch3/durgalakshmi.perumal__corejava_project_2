@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.validation.ReadbooksValidator;
 import com.fssa.livre.validation.exceptions.InvalidBooksException;
 
-
-public class TestUserName {
-
+ 
+ class TestUserName {
+ 
 	 // Valid name with only letters and spaces
     @Test
-    public void testValidName() {
+      void testValidName() {
         try {
 			assertTrue(ReadbooksValidator.validateReadBookName("Durga lakshmi"));
 		} catch (InvalidBooksException e) {
@@ -24,7 +24,7 @@ public class TestUserName {
 
     // Valid name with letters, numbers, and spaces
     @Test
-    public void testValidNameWithNumbers() {
+      void testValidNameWithNumbers() {
         try {
 			assertTrue(ReadbooksValidator.validateReadBookName("Durga lakshmi 123"));
 		} catch (InvalidBooksException e) {
@@ -35,7 +35,7 @@ public class TestUserName {
 
     // Invalid name with special characters
     @Test
-    public void testInvalidNameWithSpecialCharacters() {
+      void testInvalidNameWithSpecialCharacters() {
         try {
 			assertFalse(ReadbooksValidator.validateReadBookName("Durga@lakshmi"));
 		} catch (InvalidBooksException e) {
@@ -46,7 +46,7 @@ public class TestUserName {
 
     // Invalid name with special characters and spaces
     @Test
-    public void testInvalidNameWithSpecialCharactersAndSpaces() {
+      void testInvalidNameWithSpecialCharactersAndSpaces() {
         try {
 			assertFalse(ReadbooksValidator.validateReadBookName("Durga * Lakshmi"));
 		} catch (InvalidBooksException e) {
@@ -57,7 +57,7 @@ public class TestUserName {
 
     // Invalid name with special characters, letters, and numbers
     @Test
-    public void testInvalidNameWithSpecialCharactersLettersNumbers() {
+      void testInvalidNameWithSpecialCharactersLettersNumbers() {
         try {
 			assertFalse(ReadbooksValidator.validateReadBookName("Durga$123"));
 		} catch (InvalidBooksException e) {
