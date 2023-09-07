@@ -3,18 +3,24 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fssa.livre.dao.exception.DAOException;
 import com.fssa.livre.model.Readbooks;
-import com.fssa.livre.util.*;
-
-
-import java.sql.Statement;
-import java.util.ArrayList;
+import com.fssa.livre.util.ConnectionDb;
 
 public class ReadbooksDAO {
 
+    private static final String BOOKNAME_COLUMN = "bookname";
+    private static final String IMAGELINK_COLUMN = "imagelink";
+    private static final String PDFLINK_COLUMN = "pdflink";
+    private static final String CATEGORY_COLUMN = "category";
+    
+    private static Readbooks mapResultSetToBooks(ResultSet rs) {
+    	
+    }
 	
 
 	//AddReadBooks 
@@ -167,7 +173,7 @@ public static List<Readbooks> getAllReadbooks() throws DAOException {
     }
     
     return readbooksList;
-}
+} 
 
 //read readbooks
 

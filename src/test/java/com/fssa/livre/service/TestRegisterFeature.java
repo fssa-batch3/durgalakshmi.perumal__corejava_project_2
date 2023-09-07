@@ -27,7 +27,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 			e.printStackTrace();
 			fail(); 
 		}
-	}
+	} 
 	
 	
 	@Test

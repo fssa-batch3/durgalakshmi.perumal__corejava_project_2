@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.services.*;
 import com.fssa.livre.services.exceptions.ServiceException;
 
-public class TestLoginFeature {
+ class TestLoginFeature {
 	/**
 	 * This test method verifies a successful user login with valid email and password.
 	 * It uses UserService to attempt a login and asserts that it returns true.
 	 * If a ServiceException occurs, the test fails.
 	 */
 	@Test
-	public void testLoginSuccess() { 
+ void testLoginSuccess() { 
 		UserService userService = new UserService();
 		try {
 			assertTrue(userService.loginUser("durga@gmail.com", "@Durga123"));
@@ -31,8 +31,9 @@ public class TestLoginFeature {
 	 * It uses UserService to attempt a login and asserts that it returns false.
 	 * If a ServiceException occurs, it is handled without failing the test.
 	 */
-	@Test
-	public void testLoginFailByBothFields() {
+	@Test 
+	void testLoginFailByBothFields() {
+		
 		UserService userService = new UserService();
 		try {
 			assertFalse(userService.loginUser("durgalaks100gmail.com", "S2^trongpassword")); 
@@ -41,7 +42,7 @@ public class TestLoginFeature {
 		
 		}
 		
-	}
+	} 
 
 
     /**
@@ -50,7 +51,7 @@ public class TestLoginFeature {
     * If a ServiceException occurs, it is handled without failing the test.
     */
 	@Test
-	public void testLoginFailedByEmailField() {
+void testLoginFailedByEmailField() {
 		UserService userService = new UserService();
 		try {
 			assertFalse(userService.loginUser("Durgalaks@gmail.com", "Durga@90"));
@@ -65,7 +66,7 @@ public class TestLoginFeature {
 	 * If a ServiceException occurs, it is handled without failing the test.
 	 */
 	@Test
-	public void testLoginFailedByPasswordField() {
+ void testLoginFailedByPasswordField() {
 		UserService userService = new UserService();
 		try {
 			assertFalse(userService.loginUser("durgalaksh@gmail.com", "Durr2005&"));
