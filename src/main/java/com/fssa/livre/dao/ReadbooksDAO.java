@@ -19,7 +19,7 @@ public class ReadbooksDAO {
     private static final String CATEGORY_COLUMN = "category";
     
     private static Readbooks mapResultSetToBooks(ResultSet rs) {    	  
-    	Readbooks book = new Readbooks();
+Readbooks book = new Readbooks();
     
     	    try {
 				book.setBookname(rs.getString(BOOKNAME_COLUMN));
@@ -152,11 +152,7 @@ public static List<Readbooks> searchReadbooksByCategory(String category) throws 
 
         try (ResultSet resultSet = pst.executeQuery()) {
             while (resultSet.next()) {
-                Readbooks readbooks = new Readbooks();
-                readbooks.setBookname(resultSet.getString("bookname"));
-                readbooks.setImagelink(resultSet.getString("imagelink"));
-                readbooks.setPdflink(resultSet.getString("pdflink"));
-                readbooks.setCategory(resultSet.getString("category"));
+                Readbooks readbooks = mapResultSetToBooks(resultSet);
                 result.add(readbooks);
             }
         }
@@ -177,28 +173,21 @@ public static List<Readbooks> searchReadbooksByCategory(String category) throws 
 public static List<Readbooks> getAllReadbooks() throws DAOException {
     final String selectAllReadbooksQuery = "SELECT * FROM readbooks";
     List<Readbooks> readbooksList = new ArrayList<>();
-    
+
     try (Connection connect = ConnectionDb.getConnection();
          Statement statement = connect.createStatement();
          ResultSet rs = statement.executeQuery(selectAllReadbooksQuery)) {
-        
+
         while (rs.next()) {
-            int readbookId = rs.getInt("readbook_id");
-            String bookname = rs.getString("bookname");
-            String imagelink = rs.getString("imagelink");
-            String pdflink = rs.getString("pdflink");
-            String category = rs.getString("category");
-            
-            Readbooks readbooks = new Readbooks(readbookId, bookname, imagelink, pdflink, category);
+            Readbooks readbooks = mapResultSetToBooks(rs);
             readbooksList.add(readbooks);
         }
     } catch (SQLException e) {
         throw new DAOException(e);
     }
-    
-    return readbooksList;
-} 
 
+    return readbooksList;
+}
 //read readbooks
 
 /**
@@ -209,29 +198,21 @@ public static List<Readbooks> getAllReadbooks() throws DAOException {
 * @throws DAOException If there's a database-related error.
 */
 public Readbooks getReadBooksById(int id) throws DAOException {
-String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
+    String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
 
-try (Connection connection = ConnectionDb.getConnection();
-     PreparedStatement pst = connection.prepareStatement(selectQuery);) {
-    pst.setInt(1, id);
-    ResultSet rs = pst.executeQuery();
+    try (Connection connection = ConnectionDb.getConnection();
+         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
+        pst.setInt(1, id);
+        ResultSet rs = pst.executeQuery();
 
-    if (rs.next()) {
-        Readbooks readbooks = new Readbooks();
-       
-        readbooks.setBookname(rs.getString("bookname"));
-        readbooks.setImagelink(rs.getString("imagelink"));
-        readbooks.setPdflink(rs.getString("pdflink"));
-        readbooks.setCategory(rs.getString("category"));
-
-        return readbooks;
+        if (rs.next()) {
+            return mapResultSetToBooks(rs);
+        }
+    } catch (SQLException e) {
+        throw new DAOException(e);
     }
-} catch (SQLException e) {
-    throw new DAOException(e);
+    return null;
 }
-return null;
-}
-
 
 	
 	

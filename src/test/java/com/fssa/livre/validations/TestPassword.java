@@ -65,7 +65,7 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 		}
 		//Password Shorter Length
 		@Test
-		public void testInvalidPasswordShorterLength() {
+	 void testInvalidPasswordShorterLength() {
 			try {
 				assertFalse(UserValidator.validatePassword("Du@123"));
 			} catch (InvalidUserException e) {
