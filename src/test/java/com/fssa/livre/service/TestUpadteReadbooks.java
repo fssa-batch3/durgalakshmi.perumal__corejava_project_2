@@ -21,7 +21,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
     void testValidUpdate() {
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(14, "THE GRATE INDIA", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn1ieFcEKKU92lY6DgNVWPHwnvrQM3oobrzQ&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "TRILLER");
+        Readbooks readbooks = new Readbooks(17, "Reminders of him", "https://media.theeverygirl.com/wp-content/uploads/2022/02/romance-books-teg-6.jpg", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
         
         try {
             assertTrue(readbooksService.readbooksUpdate(readbooks));
@@ -41,7 +41,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
    void testInValidUpdate() {
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(40, "Why Me?", "imagelink-url", "pdf-link-url", "TRILLER");
+        Readbooks readbooks = new Readbooks(40, "Why Me?", "imagelink-url", "pdf-link-url", "THRILLER");
         
         try {
             assertFalse(readbooksService.readbooksUpdate(readbooks));
@@ -79,7 +79,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
     void testInavlidBookName() {
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(40, "dum@hh", "imagelink-url", "pdf-link-url", "TRILLER");
+        Readbooks readbooks = new Readbooks(40, "dum@hh", "imagelink-url", "pdf-link-url", "THRILLER");
         
         try {
             assertFalse(readbooksService.readbooksUpdate(readbooks));

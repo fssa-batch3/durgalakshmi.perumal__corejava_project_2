@@ -12,6 +12,8 @@ import com.fssa.livre.services.exceptions.ServiceException;
 
 class TestDeleteReadbooks {
 
+    private ReadbooksService readbooksService;
+
     /**
      * Test for a valid delete of a Readbooks record.
      * 
@@ -19,10 +21,10 @@ class TestDeleteReadbooks {
      * It attempts to delete the record and asserts that the deletion operation
      * returns true, indicating a successful deletion.
      */
-    @Test
+    @Test 
     void testValidDelete() {
         try {
-            assertTrue(ReadbooksService.ReadbooksDelete(15));
+            assertTrue(ReadbooksService.ReadbooksDelete(20));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for a valid delete.");
@@ -31,7 +33,6 @@ class TestDeleteReadbooks {
 
     /**
      * Test for an invalid ID during Readbooks record deletion.
-     * 
      * This test method assumes that the ID 40 does not exist in the database for
      * testing. It attempts to delete a non-existent record and asserts that the
      * deletion operation returns false, indicating that the record was not deleted.
@@ -39,7 +40,7 @@ class TestDeleteReadbooks {
     @Test
     void testInvalidIDDelete() {
         try {
-            assertFalse(ReadbooksService.ReadbooksDelete(40));
+            assertFalse(readbooksService.ReadbooksDelete(2));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for an invalid delete.");

@@ -35,7 +35,7 @@ public class TestLoginFeature {
 	public void testLoginFailByBothFields() {
 		UserService userService = new UserService();
 		try {
-			assertFalse(userService.loginUser("durgalaks100gmail.com", "S2^trongpassword"));
+			assertFalse(userService.loginUser("durgalaks100gmail.com", "S2^trongpassword")); 
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		

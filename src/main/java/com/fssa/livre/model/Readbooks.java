@@ -39,7 +39,7 @@ public class Readbooks {
     public void setCategory(String category) {
         this.category = category;
     }
-
+ 
     public int getReadbookid() {
         return readbookid;
     }

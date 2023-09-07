@@ -7,14 +7,14 @@ import com.fssa.livre.services.exceptions.ServiceException;
 import com.fssa.livre.validation.ReadbooksValidator;
 import com.fssa.livre.validation.exceptions.InvalidBooksException;
 
-public class ReadbooksService {
+public class ReadbooksService { 
 
 
 
-    /**
+    /** 
      * Adds a new readbook to the database.
      *
-     * @param readbooks The readbook to be added.
+     * @param The readbook to be added.
      * @return True if the readbook is added successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or adding the readbook.
      * @throws  
@@ -23,8 +23,8 @@ public class ReadbooksService {
         ReadbooksDAO Readbooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validRbooks(readbooks);
-            if (Readbooks.addReadBooks(readbooks)) {
-                System.out.println("Successfully added book");
+            if (Readbooks.addReadBooks(readbooks)) { 
+                System.out.println("Successfully added book"); 
                 return true;
             } else {
                 System.out.println("Book is not added");
@@ -50,7 +50,7 @@ public class ReadbooksService {
                 System.out.println("ReadBooks " + readbooks.getBookname() + " Successfully Updated");
                 return true;
             } else {
-                System.out.println("ReadBooks " + readbooks.getBookname() + " Updating not successful");
+                System.out.println("ReadBooks " + readbooks.getBookname() + " Not Updated");
                 return false;
             }
         } catch (InvalidBooksException | DAOException  e) {

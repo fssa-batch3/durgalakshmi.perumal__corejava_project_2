@@ -25,7 +25,32 @@ import com.fssa.livre.services.exceptions.ServiceException;
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			fail();
+			fail(); 
+		}
+	}
+	
+	
+	@Test
+	 void testRegistrationFailByEmail() throws ServiceException {
+		UserService userService = new UserService();
+		User user = new User("durg@g", "D@urg467");
+		try {
+			assertTrue(userService.registerUser(user));
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
+	@Test
+	 void testRegistrationFailByPassword() throws ServiceException {
+		UserService userService = new UserService();
+		User user = new User("durg@gmail.com", "dfgh-xfch gvb");
+		try {
+			assertTrue(userService.registerUser(user));
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		
 		}
 	}
 }

@@ -11,14 +11,14 @@ import com.fssa.livre.services.exceptions.ServiceException;
  class TestCreateReadbooksFeature {
 	 /**
 	  * This method tests the creation of a Readbooks product with valid input.
-	  * - Creates a ReadbooksService instance.
-	  * - Creates a Readbooks object with valid attributes.
-	  * - Asserts that adding the Readbooks product succeeds.
-	  * - Fails the test if a ServiceException is thrown.
+	  *  Creates a ReadbooksService instance.
+	  *  Creates a Readbooks object with valid attributes.
+	  *  Asserts that adding the Readbooks product succeeds.
+	  *  Fails the test if a ServiceException is thrown. 
 	  */
 	 @Test
 	 void testCreateProduct() {
-	     ReadbooksService readbooksService = new ReadbooksService();
+	     ReadbooksService readbooksService = new ReadbooksService(); 
 	     Readbooks readbooks = new Readbooks("Are You", "image-link-url", "pdf-link-url", "ADVENTURE");
 
 	     try {
@@ -27,14 +27,14 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	         e.printStackTrace();
 	         fail();
 	     }
-	 }
+	 } 
 
 	 /**
 	  * This method tests the creation of a Readbooks product with a null value.
-	  * - Creates a ReadbooksService instance.
-	  * - Sets the Readbooks object to null.
-	  * - Asserts that adding the Readbooks product fails (returns false).
-	  * - Handles any ServiceException by printing a stack trace.
+	  *  Creates a ReadbooksService instance.
+	  *  Sets the Readbooks object to null.
+	  *  Asserts that adding the Readbooks product fails (returns false).
+	  *  Handles any ServiceException by printing a stack trace.
 	  */
 	 @Test
 	 void testNullProduct() {
@@ -50,10 +50,10 @@ import com.fssa.livre.services.exceptions.ServiceException;
 
 	 /**
 	  * This method tests the creation of a Readbooks product with an invalid book name.
-	  * - Creates a ReadbooksService instance.
-	  * - Creates a Readbooks object with an invalid book name.
-	  * - Asserts that adding the Readbooks product fails (returns false).
-	  * - Handles any ServiceException by printing a stack trace.
+	  *  Creates a ReadbooksService instance.
+	  *  Creates a Readbooks object with an invalid book name.
+	  *  Asserts that adding the Readbooks product fails (returns false).
+	  *  Handles any ServiceException by printing a stack trace.
 	  */
 	 @Test
 	 void testInavlidBookName() {
@@ -69,10 +69,10 @@ import com.fssa.livre.services.exceptions.ServiceException;
 
 	 /**
 	  * This method tests the creation of a Readbooks product with an invalid category.
-	  * - Creates a ReadbooksService instance.
-	  * - Creates a Readbooks object with an invalid category.
-	  * - Asserts that adding the Readbooks product fails (returns false).
-	  * - Handles any ServiceException by printing a stack trace.
+	  *  Creates a ReadbooksService instance.
+	  *  Creates a Readbooks object with an invalid category.
+	  *  Asserts that adding the Readbooks product fails (returns false).
+	  *  Handles any ServiceException by printing a stack trace.
 	  */
 	 @Test
 	 void testInValidCategory() {

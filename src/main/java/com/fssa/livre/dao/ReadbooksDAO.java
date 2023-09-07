@@ -15,15 +15,9 @@ import java.util.ArrayList;
 
 public class ReadbooksDAO {
 
+	
 
-
-
-
-//	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/livre", "root", "123456");
-//		return connection;
-
-
-	//AddReadBooks
+	//AddReadBooks 
 
 
 /**
@@ -33,7 +27,7 @@ public class ReadbooksDAO {
  * @return True if the record was added successfully, false otherwise.
  * @throws DAOException If there is an issue with the database operation.
  */
-public boolean addReadBooks(Readbooks readbooks) throws DAOException {
+public boolean addReadBooks(Readbooks readbooks) throws DAOException { 
     String insertQuery = "INSERT INTO readbooks (bookname, imagelink, pdflink, category) VALUES (?, ?, ?, ?)";
 
     try (Connection connection = ConnectionDb.getConnection();
@@ -44,50 +38,13 @@ public boolean addReadBooks(Readbooks readbooks) throws DAOException {
         pst.setString(3, readbooks.getPdflink());
         pst.setString(4, readbooks.getCategory());
 
-        int rows = pst.executeUpdate();
+        int rows = pst.executeUpdate(); 
         
         return (rows == 1);
     } catch (SQLException e) {
         throw new DAOException(e);
     }
-}
-
-
-	//read readbooks
-
-/**
- * Retrieves a Readbooks object from the database based on the given ID.
- *
- * @param id The ID of the Readbooks record to retrieve.
- * @return The retrieved Readbooks object, or null if not found.
- * @throws DAOException If there's a database-related error.
- */
-public Readbooks getReadBooksById(int id) throws DAOException {
-    String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
-    
-    try (Connection connection = ConnectionDb.getConnection();
-         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
-        pst.setInt(1, id);
-        ResultSet rs = pst.executeQuery();
-
-        if (rs.next()) {
-            Readbooks readbooks = new Readbooks();
-           
-            readbooks.setBookname(rs.getString("bookname"));
-            readbooks.setImagelink(rs.getString("imagelink"));
-            readbooks.setPdflink(rs.getString("pdflink"));
-            readbooks.setCategory(rs.getString("category"));
-
-            return readbooks;
-        }
-    } catch (SQLException e) {
-        throw new DAOException(e);
-    }
-    return null;
-}
-
-	
-	
+}	
 	
 	//update ReadBooks
 	
@@ -212,6 +169,38 @@ public static List<Readbooks> getAllReadbooks() throws DAOException {
     return readbooksList;
 }
 
+//read readbooks
+
+/**
+* Retrieves a Readbooks object from the database based on the given ID.
+*
+* @param id The ID of the Readbooks record to retrieve.
+* @return The retrieved Readbooks object, or null if not found.
+* @throws DAOException If there's a database-related error.
+*/
+public Readbooks getReadBooksById(int id) throws DAOException {
+String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
+
+try (Connection connection = ConnectionDb.getConnection();
+     PreparedStatement pst = connection.prepareStatement(selectQuery);) {
+    pst.setInt(1, id);
+    ResultSet rs = pst.executeQuery();
+
+    if (rs.next()) {
+        Readbooks readbooks = new Readbooks();
+       
+        readbooks.setBookname(rs.getString("bookname"));
+        readbooks.setImagelink(rs.getString("imagelink"));
+        readbooks.setPdflink(rs.getString("pdflink"));
+        readbooks.setCategory(rs.getString("category"));
+
+        return readbooks;
+    }
+} catch (SQLException e) {
+    throw new DAOException(e);
+}
+return null;
+}
 
 
 	
