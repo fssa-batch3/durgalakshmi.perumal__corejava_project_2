@@ -15,10 +15,9 @@ public class UserValidator {
 	 * @return True if the User details are valid, false otherwise.
 	 * @throws InvalidUserException If the User details are invalid.
 	 */
-
 	@SuppressWarnings("null")
 	public static void validUser(User user) throws InvalidUserException {
-		if (user != null)
+		if (user == null)
 			throw new InvalidUserException("User details are invalid");
 		
 		 validateEmail(user.getEmail());

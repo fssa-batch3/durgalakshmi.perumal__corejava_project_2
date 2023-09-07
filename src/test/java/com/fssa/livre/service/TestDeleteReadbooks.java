@@ -13,7 +13,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 class TestDeleteReadbooks {
 
     private ReadbooksService readbooksService;
- 
+
     /**
      * Test for a valid delete of a Readbooks record.
      * 
@@ -22,9 +22,9 @@ class TestDeleteReadbooks {
      * returns true, indicating a successful deletion.
      */
     @Test 
-    void testValidDelete() {
+    void testValidDelete() { 
         try {
-            assertTrue(ReadbooksService.ReadbooksDelete(20));
+            assertTrue(ReadbooksService.readbooksDelete(6));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for a valid delete.");
@@ -40,7 +40,7 @@ class TestDeleteReadbooks {
     @Test
     void testInvalidIDDelete() {
         try {
-            assertFalse(readbooksService.ReadbooksDelete(2));
+            assertFalse(readbooksService.readbooksDelete(2));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for an invalid delete.");

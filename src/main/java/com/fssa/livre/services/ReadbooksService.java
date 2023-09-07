@@ -27,7 +27,7 @@ public class ReadbooksService {
             ReadbooksValidator.validRbooks(readbooks);
             if (Readbooks.addReadBooks(readbooks)) { 
                 return true;
-            } else {
+            } else { 
                 return false;
             }
         } catch (InvalidBooksException | DAOException e) {
@@ -63,7 +63,7 @@ public class ReadbooksService {
      * @return True if the readbook is deleted successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or deleting the readbook.
      */
-    public static boolean ReadbooksDelete(int id) throws ServiceException {
+    public static boolean readbooksDelete(int id) throws ServiceException {
         ReadbooksDAO DeleteBooks = new ReadbooksDAO();
         try {
             ReadbooksValidator.validateId(id);

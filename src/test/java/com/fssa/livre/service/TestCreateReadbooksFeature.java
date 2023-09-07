@@ -18,7 +18,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	  */
 	 @Test
 	 void testCreateProduct() {
-	     ReadbooksService readbooksService = new ReadbooksService(); 
+	     ReadbooksService readbooksService = new ReadbooksService();
 	     Readbooks readbooks = new Readbooks("Are You", "image-link-url", "pdf-link-url", "ADVENTURE");
 
 	     try {
@@ -27,8 +27,8 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	         e.printStackTrace();
 	         fail();
 	     }
-	 } 
- 
+	 }
+
 	 /**
 	  * This method tests the creation of a Readbooks product with a null value.
 	  *  Creates a ReadbooksService instance.

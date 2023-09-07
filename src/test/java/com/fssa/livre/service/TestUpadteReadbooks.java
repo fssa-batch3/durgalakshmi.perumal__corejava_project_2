@@ -19,9 +19,9 @@ import com.fssa.livre.services.exceptions.ServiceException;
      * succeeds without exceptions. 
      */
     @Test
-    void testValidUpdate() {
+    void testValidUpdate() { 
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(17, "Reminders of him", "https://media.theeverygirl.com/wp-content/uploads/2022/02/romance-books-teg-6.jpg", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
+        Readbooks readbooks = new Readbooks(6, "Reminders of him", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuEzL4l5KAbpLcvvnuJx02-APfbhSiH-_cdA&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
         
         try {
             assertTrue(readbooksService.readbooksUpdate(readbooks));
