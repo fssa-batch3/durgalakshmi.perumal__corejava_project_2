@@ -11,7 +11,7 @@ import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
 class TestDeleteReadbooks {
-
+ 
     private ReadbooksService readbooksService;
 
     /**
@@ -24,7 +24,7 @@ class TestDeleteReadbooks {
     @Test 
     void testValidDelete() { 
         try {
-            assertTrue(ReadbooksService.readbooksDelete(6));
+            assertTrue(ReadbooksService.readbooksDelete(8));
         } catch (ServiceException e) {
             e.printStackTrace();
             fail("ServiceException should not be thrown for a valid delete.");

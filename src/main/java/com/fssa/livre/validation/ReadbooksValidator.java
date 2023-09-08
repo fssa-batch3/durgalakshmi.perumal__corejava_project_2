@@ -123,6 +123,25 @@ public class ReadbooksValidator {
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Validates the details of a Readbooks object.
 	 *

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
-
+ 
  class TestUpadteReadbooks {
 
     /**
@@ -21,7 +21,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
     void testValidUpdate() { 
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(6, "Reminders of him", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuEzL4l5KAbpLcvvnuJx02-APfbhSiH-_cdA&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
+        Readbooks readbooks = new Readbooks(7, "Good vibes and Good LIfes", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuEzL4l5KAbpLcvvnuJx02-APfbhSiH-_cdA&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
         
         try {
             assertTrue(readbooksService.readbooksUpdate(readbooks));
