@@ -19,7 +19,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	 @Test
 	 void testCreateProduct() {
 	     ReadbooksService readbooksService = new ReadbooksService();
-	     Readbooks readbooks = new Readbooks("Are You", "image-link-url", "pdf-link-url", "ADVENTURE");
+	     Readbooks readbooks = new Readbooks("I am Mad", "image-link-url", "pdf-link-url", "ADVENTURE");
 
 	     try {
 	         assertTrue(readbooksService.addReadBooks(readbooks));
