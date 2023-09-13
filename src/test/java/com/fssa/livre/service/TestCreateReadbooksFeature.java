@@ -14,7 +14,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	  *  Creates a ReadbooksService instance.
 	  *  Creates a Readbooks object with valid attributes.
 	  *  Asserts that adding the Readbooks product succeeds.
-	  *  Fails the test if a ServiceException is thrown. 
+	  *  Fails the test if a ServiceException is thrown.  
 	  */
 	 @Test
 	 void testCreateProduct() {

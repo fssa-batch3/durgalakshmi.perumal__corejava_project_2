@@ -21,7 +21,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
     @Test
     void testValidUpdate() { 
         ReadbooksService readbooksService = new ReadbooksService();
-        Readbooks readbooks = new Readbooks(7, "Good vibes and Good LIfes", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuEzL4l5KAbpLcvvnuJx02-APfbhSiH-_cdA&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
+        Readbooks readbooks = new Readbooks(1, "India", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe_BDe2i7ytRtsL5nDh8bE068Grtvwt3kDiA&usqp=CAU", "https://www.pdfbooksworld.com/bibi/pre.html?book=186.epub", "ROMANTIC");
         
         try {
             assertTrue(readbooksService.readbooksUpdate(readbooks));
