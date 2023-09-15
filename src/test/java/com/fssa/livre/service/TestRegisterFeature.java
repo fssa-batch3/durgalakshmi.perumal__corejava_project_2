@@ -18,7 +18,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	  * @throws ServiceException If an unexpected error occurs during registration.
 	  */
 	@Test
-	 void testRegistrationSuccess() throws ServiceException {
+	 void testRegistrationSuccess() throws ServiceException { 
 		UserService userService = new UserService();
 		User user = new User("durg@gmail.com", "D@urg467");
 		try {

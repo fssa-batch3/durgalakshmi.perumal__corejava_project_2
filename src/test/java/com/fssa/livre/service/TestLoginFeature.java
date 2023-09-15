@@ -17,10 +17,10 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	@Test
  void testLoginSuccess() { 
 		UserService userService = new UserService();
-		try {
+		try { 
 			assertTrue(userService.loginUser("durga@gmail.com", "@Durga123"));
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 			fail();
 		}
 	}

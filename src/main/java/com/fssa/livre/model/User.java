@@ -6,6 +6,15 @@ public class User {
 	private int userId;
 	private String email;
 	private String password;
+	  private boolean isAdmin; 
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -15,7 +24,7 @@ public class User {
 	}
 	
 	public String getPassword() {
-		return password;
+		return password; 
 	}
 	public void setPassword(String password) {
 		this.password = password;

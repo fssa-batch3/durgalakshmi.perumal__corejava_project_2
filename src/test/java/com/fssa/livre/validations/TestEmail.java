@@ -19,7 +19,7 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 			e.printStackTrace();
 		}
 	 
-	}
+	} 
 	// no special character in email
 @Test
 

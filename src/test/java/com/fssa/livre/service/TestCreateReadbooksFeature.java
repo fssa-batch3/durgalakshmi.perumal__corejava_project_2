@@ -9,7 +9,7 @@ import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.exceptions.ServiceException;
 
  class TestCreateReadbooksFeature {
-	 /**
+	 /** 
 	  * This method tests the creation of a Readbooks product with valid input.
 	  *  Creates a ReadbooksService instance.
 	  *  Creates a Readbooks object with valid attributes.
@@ -34,7 +34,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	  *  Creates a ReadbooksService instance.
 	  *  Sets the Readbooks object to null.
 	  *  Asserts that adding the Readbooks product fails (returns false).
-	  *  Handles any ServiceException by printing a stack trace.
+	  *  Handles any ServiceException by printing a stack trace. 
 	  */
 	 @Test
 	 void testNullProduct() {

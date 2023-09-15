@@ -21,7 +21,7 @@ public class UserValidator {
 			throw new InvalidUserException("User details are invalid");
 		
 		 validateEmail(user.getEmail());
-		 validatePassword(user.getPassword());
+		 validatePassword(user.getPassword()); 
 	}
 
 	/**

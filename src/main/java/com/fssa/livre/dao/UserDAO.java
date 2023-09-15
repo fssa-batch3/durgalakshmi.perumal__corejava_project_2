@@ -20,9 +20,9 @@ public class UserDAO {
 	 *
 	 * @param email The email of the user to retrieve.
 	 * @return The user object containing email and password, or null if not found.
-	 * @throws DAOException If there is an issue with the database operation.
+	 * @throws DAOException If there is an issue with the database operation. 
 	 */
-	public User getUserByEmail(String email) throws DAOException {
+	public static User getUserByEmail(String email) throws DAOException {
 	    String selectQuery = "SELECT * FROM user WHERE email = ?";
 	    try (Connection connection = ConnectionDb.getConnection();
 	         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
