@@ -12,7 +12,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
  class TestUpadteReadbooks {
 
     /**
-     * Test for a valid update of Readbooks.
+     * Test for a valid update of Readbooks. 
      * 
      * This test method creates a new instance of ReadbooksService, sets up a
      * Readbooks object with valid data, and verifies that the update operation

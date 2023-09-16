@@ -19,7 +19,7 @@ public class ReadbooksService {
      * @param The readbook to be added.
      * @return True if the readbook is added successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or adding the readbook.
-     * @throws  
+     * @throws   
      */
     public boolean addReadBooks(Readbooks readbooks) throws ServiceException  {
         ReadbooksDAO Readbooks = new ReadbooksDAO();
@@ -101,7 +101,13 @@ public class ReadbooksService {
         }
     }
 
-    
+    public Readbooks getReadbooksById(int id) throws ServiceException {
+        try {
+            return ReadbooksDAO.getReadBooksById(id);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
     
     /**
      * 

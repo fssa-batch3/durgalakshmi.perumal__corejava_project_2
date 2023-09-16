@@ -18,7 +18,7 @@ public class ReadbooksDAO {
 	//AddReadBooks 
 
  
-/**
+/** 
  * Adds a new Readbooks record to the database.
  *
  * @param readbooks The Readbooks object containing book information.
@@ -176,7 +176,7 @@ public static List<Readbooks> getAllReadbooks() throws DAOException {
 * @return The retrieved Readbooks object, or null if not found.
 * @throws DAOException If there's a database-related error.
 */
-public Readbooks getReadBooksById(int id) throws DAOException {
+public static Readbooks getReadBooksById(int id) throws DAOException {
 String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
 
 try (Connection connection = ConnectionDb.getConnection();
