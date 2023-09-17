@@ -177,7 +177,7 @@ public static List<Readbooks> getAllReadbooks() throws DAOException {
 * @throws DAOException If there's a database-related error.
 */
 public static Readbooks getReadBooksById(int id) throws DAOException {
-String selectQuery = "SELECT * FROM readbooks WHERE id = ?";
+String selectQuery = "SELECT * FROM readbooks WHERE readbook_id = ?";
 
 try (Connection connection = ConnectionDb.getConnection();
      PreparedStatement pst = connection.prepareStatement(selectQuery);) {
@@ -186,7 +186,7 @@ try (Connection connection = ConnectionDb.getConnection();
 
     if (rs.next()) {
         Readbooks readbooks = new Readbooks();
-       
+        readbooks.setReadbookid(rs.getInt("readbook_id"));
         readbooks.setBookname(rs.getString("bookname"));
         readbooks.setImagelink(rs.getString("imagelink"));
         readbooks.setPdflink(rs.getString("pdflink"));

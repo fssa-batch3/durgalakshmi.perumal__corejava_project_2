@@ -16,7 +16,7 @@ public class Readbooks {
         this.bookname = bookname;
     }
 
-    public String getImagelink() {
+    public String getImagelink() { 
         return imagelink;
     }
 
@@ -44,7 +44,7 @@ public class Readbooks {
         return readbookid;
     }
 
-    public void getReadbookid(int newBookId) {
+    public void setReadbookid(int newBookId) {
         this.readbookid = newBookId;
     }
 

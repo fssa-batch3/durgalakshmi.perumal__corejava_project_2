@@ -15,7 +15,7 @@ public class ReadbooksService {
 
     /** 
      * Adds a new readbook to the database.
-     *
+     * 
      * @param The readbook to be added.
      * @return True if the readbook is added successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or adding the readbook.
