@@ -116,6 +116,7 @@ public static List<Readbooks> searchReadbooksByCategory(String category) throws 
     try (Connection connection = ConnectionDb.getConnection();
          PreparedStatement pst = connection.prepareStatement(searchQuery);) {
 
+    	
         pst.setString(1, category);
 
         try (ResultSet resultSet = pst.executeQuery()) {
@@ -201,6 +202,32 @@ return null;
 }
 
 
-	
+public List<Readbooks> getBooksByUser(int userId) throws DAOException {
+    String selectQuery = "SELECT * FROM readbooks WHERE user_id = ?"; // Assuming there's a user_id column in your database table.
+
+    List<Readbooks> booksList = new ArrayList<>();
+
+    try (Connection connection = ConnectionDb.getConnection();
+         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
+        pst.setInt(1, userId);
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            Readbooks readbooks = new Readbooks();
+            readbooks.setReadbookid(rs.getInt("readbook_id"));
+            readbooks.setBookname(rs.getString("bookname"));
+            readbooks.setImagelink(rs.getString("imagelink"));
+            readbooks.setPdflink(rs.getString("pdflink"));
+            readbooks.setCategory(rs.getString("category"));
+
+            booksList.add(readbooks);
+        }
+    } catch (SQLException e) {
+        throw new DAOException(e);
+    }
+
+    return booksList;
+}
+
 	
 }

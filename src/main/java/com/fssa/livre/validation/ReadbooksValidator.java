@@ -43,19 +43,16 @@ public class ReadbooksValidator {
 	    if (pdfurl == null) {
 	        throw new InvalidBooksException("The book PDF URL should not be null");
 	    }
-	    
-	    String trimmedUrl = pdfurl.trim(); 
-	    
+
+	    String trimmedUrl = pdfurl.trim();
+
 	    if (trimmedUrl.isEmpty()) {
 	        throw new InvalidBooksException("The book PDF URL should not be empty");
 	    }
-	    
-	    if (!trimmedUrl.startsWith("https://")) {
-	        throw new InvalidBooksException("Invalid book PDF URL format. It should start with 'https://'.");
-	    }
-	    
+
 	    return true;
 	}
+
 
 	
 	/**
