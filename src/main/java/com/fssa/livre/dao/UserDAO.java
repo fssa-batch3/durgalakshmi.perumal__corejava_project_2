@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.fssa.livre.dao.exception.DAOException;
 import com.fssa.livre.model.User;
+import com.fssa.livre.services.exceptions.ServiceException;
 import com.fssa.livre.util.ConnectionDb;
 
 public class UserDAO {
@@ -31,13 +32,12 @@ public class UserDAO {
 	        ResultSet rs = pst.executeQuery();
 
 	        if (rs.next()) {
-	        	User user = new User();
+	            User user = new User();
 	            user.setEmail(rs.getString("email"));
 	            user.setPassword(rs.getString("password"));
-	         
-
-
-
+	            user.setname(rs.getString("name"));
+	            user.setAge(rs.getInt("age"));
+	            user.setPhoneNumber(rs.getLong("phoneNumber"));
 	            return user;
 	        }
 
@@ -46,6 +46,68 @@ public class UserDAO {
 	    }
 	    return null;
 	}
+
+	
+	public static int getUserIdByEmail(String email) throws DAOException {
+	    String selectQuery = "SELECT user_id FROM user WHERE email = ?";
+	    try (Connection connection = ConnectionDb.getConnection();
+	         PreparedStatement pst = connection.prepareStatement(selectQuery)) {
+	        pst.setString(1, email);
+
+	        try (ResultSet rs = pst.executeQuery()) {
+	            if (rs.next()) {
+	                return rs.getInt("user_id");
+	            }
+	        }
+	    } catch (SQLException e) {
+	        throw new DAOException(e);
+	    }
+	    
+	    return -1; 
+	}
+
+	
+	
+	 public void updateUser(String email, String name, int age, String phoneNumber) throws DAOException {
+	        String updateQuery = "UPDATE user SET name = ?, age = ?, phoneNumber = ? WHERE email = ?";
+	        try (Connection connection = ConnectionDb.getConnection();
+	             PreparedStatement pst = connection.prepareStatement(updateQuery)) {
+	            pst.setString(1, name);
+	            pst.setInt(2, age);
+	            pst.setString(3, phoneNumber);
+	            pst.setString(4, email);
+
+	            int rowsUpdated = pst.executeUpdate();
+	            if (rowsUpdated != 1) {
+	                throw new DAOException("Failed to update user information");
+	            }
+	        } catch (SQLException e) {
+	            throw new DAOException(e);
+	        }
+	    }
+	
+	 public static void updateUserProfile(User user) throws ServiceException {
+	        String updateQuery = "UPDATE user SET name = ?, age = ?, phoneNumber = ? WHERE email = ?";
+
+	        try (Connection connection = ConnectionDb.getConnection();
+	             PreparedStatement pst = connection.prepareStatement(updateQuery);) {
+	            pst.setString(1, user.getname());
+	            pst.setInt(2, user.getAge());
+	            pst.setLong(3, user.getPhoneNumber());
+	            pst.setString(4, user.getEmail());
+
+	            int rowsUpdated = pst.executeUpdate();
+
+	            if (rowsUpdated == 0) {
+	                throw new ServiceException("Failed to update user profile.");
+	            }
+	        } catch (SQLException e) {
+	            throw new ServiceException(e);
+	        }
+	    }
+	
+
+	 
 
 	public static User getUserById(int userId) throws DAOException {
 	    String selectQuery = "SELECT * FROM user WHERE user_id = ?";

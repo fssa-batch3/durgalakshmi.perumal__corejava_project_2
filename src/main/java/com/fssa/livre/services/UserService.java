@@ -32,6 +32,28 @@ public class UserService {
         }
     }
     
+    public void updateUserProfile(User user) throws ServiceException {
+        
+    }
+    
+    public User getUserByEmail(String email) throws ServiceException {
+        try {
+            return UserDAO.getUserByEmail(email);
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+    
+    public int getUserIdByEmail(String email) throws ServiceException, DAOException {
+        try {
+			return UserDAO.getUserIdByEmail(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+    }
+
     
     public User getUserById(int userId) throws ServiceException {
         try {
@@ -89,4 +111,7 @@ public class UserService {
 			throw new ServiceException(e);
 		}
     }
+
+
+	
 }

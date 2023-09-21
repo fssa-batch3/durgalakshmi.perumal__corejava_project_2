@@ -4,7 +4,7 @@ import com.google.protobuf.Timestamp;
 
 public class UserBooks {
 	  private int userBookId;
-	    private int userId;
+	    private  int userId;
 	    private int readBookId;
 	    private boolean status;
 	    private Timestamp createdAt;
@@ -20,10 +20,10 @@ public class UserBooks {
 		
 		}
 		
-	    public UserBooks(int userId, int readBookId, boolean status) {
+	    public UserBooks(int userId, int readBookId) {
 	        this.userId = userId;
 	        this.readBookId = readBookId;
-	        this.status = status;
+	  
 	    }
 	
 	

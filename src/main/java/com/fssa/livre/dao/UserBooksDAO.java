@@ -17,14 +17,13 @@ public class UserBooksDAO {
 	
 	
 	  public boolean addUserBook(UserBooks userBooks) throws DAOException {
-	        String insertQuery = "INSERT INTO user_books (user_id, readbook_id, status) VALUES (?, ?, ?)";
+	        String insertQuery = "INSERT INTO user_books (user_id, readbook_id) VALUES (?, ?)";
 
 	        try (Connection connection = ConnectionDb.getConnection();
 	             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
 
 	            preparedStatement.setInt(1, userBooks.getUserId());
 	            preparedStatement.setInt(2, userBooks.getReadBookId());
-	            preparedStatement.setBoolean(3, userBooks.isStatus());
 
 	            int rowsAffected = preparedStatement.executeUpdate();
 	            return rowsAffected > 0;
@@ -60,9 +59,8 @@ public class UserBooksDAO {
 	  private static UserBooks mapResultSetToUserBooks(ResultSet resultSet) throws SQLException {
 		    int userId = resultSet.getInt("user_id");
 		    int readBookId = resultSet.getInt("readbook_id");
-		    boolean status = resultSet.getBoolean("status");
 		    
-		    return new UserBooks(userId, readBookId, status);
+		    return new UserBooks(userId, readBookId);
 		}
 
 
