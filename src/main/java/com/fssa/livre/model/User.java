@@ -4,9 +4,50 @@ package com.fssa.livre.model;
 public class User {
 //getter and setters
 	private int userId;
-	private String email;
 	private String password;
-	  private boolean isAdmin; 
+	private String email;
+	private String name;
+	private long phoneNumber;
+
+    private int age;
+    
+    
+    public User(String email, String password, String name, long phoneNumber, int age) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+    }
+
+
+	public String getname() {
+		return name;
+	}
+
+	public void setname(String name) {
+		this.name = name;
+	}
+
+
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	private boolean isAdmin; 
 	public boolean isAdmin() {
 		return isAdmin;
 	}
@@ -37,13 +78,13 @@ public class User {
 	}
 	
 	//constructor for servlet
-	
-	public User(int userId , String email, String password) {
-		super();
-		this.userId = userId;
-		this.email = email;
-		this.password = password;
-	}
+//	
+//	public User(int userId , String email, String password) {
+//		super();
+//		this.userId = userId;
+//		this.email = email;
+//		this.password = password;
+//	}
 	
 	// constructot
 	public User(int userId, String email) {
@@ -64,10 +105,6 @@ public class User {
 				+ super.toString() + "]";
 	}
 
-    // Default constructor
-	public User() {
-		
-	}
-	
+
 
 }

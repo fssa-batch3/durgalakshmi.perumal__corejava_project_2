@@ -18,7 +18,7 @@ public class UserService {
      * @return True if the user is registered successfully, false otherwise.
      * @throws ServiceException If an error occurs while validating or registering the user.
      */
-    public boolean registerUser(User user) throws ServiceException {
+    public static boolean registerUser(User user) throws ServiceException {
         UserDAO userDAO = new UserDAO();
         try {
             UserValidator.validUser(user); 
@@ -31,6 +31,19 @@ public class UserService {
             throw new ServiceException(e);
         }
     }
+
+    public boolean updateUserDetailsByEmail(String email, String firstname, String lastname, int phoneNumber, int age) throws ServiceException, InvalidUserException {
+        try {
+            if (UserValidator.validateUpdateUserDetails(firstname, lastname, phoneNumber, age)) {
+                return UserDAO.updateUserDetailsByEmail(email, firstname, lastname, phoneNumber, age);
+            } else {
+                return false; // Validation failed
+            }
+        } catch (DAOException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 
     /**
      * Authenticates a user during login.

@@ -3,9 +3,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.fssa.livre.dao.UserDAO;
+import com.fssa.livre.dao.exception.DAOException;
+import com.fssa.livre.model.Readbooks;
 import com.fssa.livre.model.User;
+import com.fssa.livre.services.ReadbooksService;
 import com.fssa.livre.services.UserService;
 import com.fssa.livre.services.exceptions.ServiceException;
+import com.fssa.livre.validation.exceptions.InvalidUserException;
 
  class TestRegisterFeature {
 	 
@@ -20,7 +25,7 @@ import com.fssa.livre.services.exceptions.ServiceException;
 	@Test
 	 void testRegistrationSuccess() throws ServiceException { 
 		UserService userService = new UserService();
-		User user = new User("durg@gmail.com", "D@urg467");
+		User user = new User("meena@gmail.com", "D@urg467", "Durga", 9551096952L, 23);
 		try {
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {
@@ -53,4 +58,22 @@ import com.fssa.livre.services.exceptions.ServiceException;
 		
 		}
 	}
+
+	@Test
+	void testUpdateUserDetailsByEmail() {
+	    UserService userService = new UserService();
+	    User user = new User("D@urg467","durg@gmail.com", "durga", "laks", 894678977, 18); // Provide a valid password
+	        
+	    try {
+	        assertTrue(userService.registerUser(user));
+	    } catch (ServiceException e) {
+	        e.printStackTrace();
+	        fail();
+	    }
+	}
+
+
+
+
+
 }

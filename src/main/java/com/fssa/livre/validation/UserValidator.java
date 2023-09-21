@@ -16,12 +16,12 @@ public class UserValidator {
 	 * @throws InvalidUserException If the User details are invalid.
 	 */
 	@SuppressWarnings("null")
-	public static void validUser(User user) throws InvalidUserException {
+	public static boolean validUser(User user) throws InvalidUserException {
 		if (user == null)
 			throw new InvalidUserException("User details are invalid");
 		
 		 validateEmail(user.getEmail());
-		 validatePassword(user.getPassword()); 
+		 return validatePassword(user.getPassword()); 
 	}
 
 	/**
@@ -102,6 +102,73 @@ public class UserValidator {
 			}
 
 		} 
+
+	
+
+public static boolean validateAge(int age) throws InvalidUserException {
+    if (age < 18 || age > 100) {
+        throw new InvalidUserException("Age should be between 18 and 100.");
+    }
+    
+    return true;
+}
+
+public static boolean validatePhoneNumber(int phoneNumber) throws InvalidUserException {
+    String phoneNumberStr = String.valueOf(phoneNumber);
+    
+    if (phoneNumberStr.length() != 10) {
+        throw new InvalidUserException("Phone number should have exactly 10 digits.");
+    }
+    
+    char firstDigit = phoneNumberStr.charAt(0);
+    
+    if (firstDigit != '8' && firstDigit != '6' && firstDigit != '7' && firstDigit != '9') {
+        throw new InvalidUserException("Phone number should start with 8, 6, 7, or 9.");
+    }
+    
+    return true;
+}
+
+public static boolean validateFirstName(String firstname) throws InvalidUserException {
+    if (firstname == null) {
+        throw new InvalidUserException("Name should not be null.");
+    }
+    
+    if (firstname.trim().isEmpty()) {
+        throw new InvalidUserException("Name should not be empty.");
+    }
+
+    if (!firstname.matches("^[a-zA-Z]*$")) {
+        throw new InvalidUserException("Name should only contain alphabetic characters.");
+    }
+    
+    return true;
+}
+
+
+public static boolean validateLastName(String lastname) throws InvalidUserException {
+    if (lastname == null) {
+        throw new InvalidUserException("Name should not be null.");
+    }
+    
+    if (lastname.trim().isEmpty()) {
+        throw new InvalidUserException("Name should not be empty.");
+    }
+
+    if (!lastname.matches("^[a-zA-Z]*$")) {
+        throw new InvalidUserException("Name should only contain alphabetic characters.");
+    }
+    
+    return true;
+}
+	
+public static boolean validateUpdateUserDetails(String firstname, String lastname, int phoneNumber, int age) throws InvalidUserException {
+    if (validateFirstName(firstname) && validateLastName(lastname) && validateAge(age) && validatePhoneNumber(phoneNumber)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 	}
 

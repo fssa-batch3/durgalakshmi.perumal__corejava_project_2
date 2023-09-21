@@ -31,9 +31,14 @@ public class UserDAO {
 	        ResultSet rs = pst.executeQuery();
 
 	        if (rs.next()) {
-	            User user = new User();
+	        	User user = new User();
 	            user.setEmail(rs.getString("email"));
 	            user.setPassword(rs.getString("password"));
+	            user.setname(rs.getString("name"));
+	            user.setPhoneNumber(rs.getInt("phoneNumber"));
+                user.setAge(rs.getInt("age"));
+
+
 
 	            return user;
 	        }
@@ -44,7 +49,30 @@ public class UserDAO {
 	    return null;
 	}
 
+
+
+
 	
+	 public static boolean updateUserDetailsByEmail(String email, String firstname, String lastname, int phoneNumber, int age) throws DAOException {
+	        String updateQuery = "UPDATE user SET firstname = ?, lastname = ?, phonenumber = ?, age = ? WHERE email = ?";
+	        try (Connection connection = ConnectionDb.getConnection();
+	             PreparedStatement pst = connection.prepareStatement(updateQuery);) {
+	            pst.setString(1, firstname);
+	            pst.setString(2, lastname);
+	            pst.setInt(3, phoneNumber);
+	            pst.setInt(4, age);
+	            pst.setString(5, email);
+
+	            int rowsAffected = pst.executeUpdate();
+
+	            return rowsAffected > 0;
+	        } catch (SQLException e) {
+	            throw new DAOException(e);
+	        }
+	    }
+
+	
+
 	
 	/**
 	 * Adds a new user to the database during the registration process.
@@ -53,20 +81,25 @@ public class UserDAO {
 	 * @return True if the registration is successful, false otherwise.
 	 * @throws DAOException If there is an issue with the database operation.
 	 */
-	public boolean register(User user) throws DAOException {
-	    String insertQuery = "INSERT INTO user (email, password) VALUES (?, ?)";
-	    try (Connection connection = ConnectionDb.getConnection();
-	         PreparedStatement pst = connection.prepareStatement(insertQuery);) {
-	        pst.setString(1, user.getEmail());
-	        pst.setString(2, user.getPassword());
+	 public static boolean register(User user) throws DAOException {
+		    String insertQuery = "INSERT INTO user (email, password, name, phonenumber, age) VALUES (?, ?, ?, ?, ?)";
+		    try (Connection connection = ConnectionDb.getConnection();
+		         PreparedStatement pst = connection.prepareStatement(insertQuery)) {
+		        pst.setString(1, user.getEmail());
+		        pst.setString(2, user.getPassword());
+		        pst.setString(3, user.getname());
+		        pst.setLong(4, user.getPhoneNumber());
+		        pst.setInt(5, user.getAge());
 
-	        int rows = pst.executeUpdate();
+		        int rows = pst.executeUpdate();
+		        return (rows == 1);
+		    } catch (SQLException e) {
+		        throw new DAOException(e);
+		    }
+		}
 
-	        return (rows == 1);
-	    } catch (SQLException e) {
-	        throw new DAOException(e);
-	    }
-	}
+	
+	
 	
 	/**
 	 * @return
