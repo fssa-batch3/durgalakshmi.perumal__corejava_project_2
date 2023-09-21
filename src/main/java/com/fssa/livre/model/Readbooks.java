@@ -48,6 +48,13 @@ public class Readbooks {
         this.readbookid = newBookId;
     }
 
+    public Readbooks(String bookname, String imagelink, String pdflink, String category) {
+        this.bookname = bookname;
+        this.imagelink = imagelink;
+        this.pdflink = pdflink;
+        this.category = category;
+    }
+
     // Constructors
     public Readbooks(int readbookid, String bookname, String imagelink, String pdflink, String category) {
         super();
@@ -63,13 +70,7 @@ public class Readbooks {
     }
 
 
-    public Readbooks(String bookname, String imagelink, String pdflink, String category) {
-    	   this.bookname = bookname;
-           this.imagelink = imagelink;
-           this.pdflink = pdflink;
-           this.category = category;
-	}
-    
+
 
 	// Override toString method 
     @Override

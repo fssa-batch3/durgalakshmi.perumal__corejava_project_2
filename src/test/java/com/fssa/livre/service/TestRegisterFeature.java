@@ -38,7 +38,7 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 	@Test
 	 void testRegistrationFailByEmail() throws ServiceException {
 		UserService userService = new UserService();
-		User user = new User("durg@g", "D@urg467");
+		User user = new User("meena@gmail.com", "D@urg467", null, 0, 0);
 		try {
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {
@@ -50,7 +50,7 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 	@Test
 	 void testRegistrationFailByPassword() throws ServiceException {
 		UserService userService = new UserService();
-		User user = new User("durg@gmail.com", "dfgh-xfch gvb");
+		User user = new User("durg@gmail.com", "dfgh-xfch gvb", null, 0, 0);
 		try {
 			assertTrue(userService.registerUser(user));
 		} catch (ServiceException e) {
@@ -62,7 +62,7 @@ import com.fssa.livre.validation.exceptions.InvalidUserException;
 	@Test
 	void testUpdateUserDetailsByEmail() {
 	    UserService userService = new UserService();
-	    User user = new User("D@urg467","durg@gmail.com", "durga", "laks", 894678977, 18); // Provide a valid password
+	    User user = new User("D@urg467","durg@gmail.com", null, 0, 0); // Provide a valid password
 	        
 	    try {
 	        assertTrue(userService.registerUser(user));

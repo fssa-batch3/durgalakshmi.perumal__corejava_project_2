@@ -21,6 +21,7 @@ public class User {
     }
 
 
+    
 	public String getname() {
 		return name;
 	}
@@ -92,7 +93,7 @@ public class User {
 		this.email = email;
 	}
 	//constructor
-	public User(String email, String password) {
+	public User() {
 		super();
 		this.email = email;
 		this.password = password;

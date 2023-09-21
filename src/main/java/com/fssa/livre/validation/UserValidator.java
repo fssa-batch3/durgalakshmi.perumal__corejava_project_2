@@ -129,41 +129,25 @@ public static boolean validatePhoneNumber(int phoneNumber) throws InvalidUserExc
     return true;
 }
 
-public static boolean validateFirstName(String firstname) throws InvalidUserException {
-    if (firstname == null) {
+public static boolean validateName(String name) throws InvalidUserException {
+    if (name == null) {
         throw new InvalidUserException("Name should not be null.");
     }
     
-    if (firstname.trim().isEmpty()) {
+    if (name.trim().isEmpty()) {
         throw new InvalidUserException("Name should not be empty.");
     }
 
-    if (!firstname.matches("^[a-zA-Z]*$")) {
+    if (!name.matches("^[a-zA-Z]*$")) {
         throw new InvalidUserException("Name should only contain alphabetic characters.");
     }
     
     return true;
 }
 
-
-public static boolean validateLastName(String lastname) throws InvalidUserException {
-    if (lastname == null) {
-        throw new InvalidUserException("Name should not be null.");
-    }
-    
-    if (lastname.trim().isEmpty()) {
-        throw new InvalidUserException("Name should not be empty.");
-    }
-
-    if (!lastname.matches("^[a-zA-Z]*$")) {
-        throw new InvalidUserException("Name should only contain alphabetic characters.");
-    }
-    
-    return true;
-}
 	
-public static boolean validateUpdateUserDetails(String firstname, String lastname, int phoneNumber, int age) throws InvalidUserException {
-    if (validateFirstName(firstname) && validateLastName(lastname) && validateAge(age) && validatePhoneNumber(phoneNumber)) {
+public static boolean getUserByEmail(String name, int phoneNumber, int age) throws InvalidUserException {
+    if (validateName(name) && validateAge(age) && validatePhoneNumber(phoneNumber)) {
         return true;
     } else {
         return false;

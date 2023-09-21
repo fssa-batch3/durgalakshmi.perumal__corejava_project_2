@@ -34,9 +34,7 @@ public class UserDAO {
 	        	User user = new User();
 	            user.setEmail(rs.getString("email"));
 	            user.setPassword(rs.getString("password"));
-	            user.setname(rs.getString("name"));
-	            user.setPhoneNumber(rs.getInt("phoneNumber"));
-                user.setAge(rs.getInt("age"));
+	         
 
 
 
@@ -49,6 +47,29 @@ public class UserDAO {
 	    return null;
 	}
 
+	public static User getUserById(int userId) throws DAOException {
+	    String selectQuery = "SELECT * FROM user WHERE user_id = ?";
+	    try (Connection connection = ConnectionDb.getConnection();
+	         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
+	        pst.setInt(1, userId);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        if (rs.next()) {
+	            User user = new User();
+	            user.setUserId(rs.getInt("user_id"));
+	            user.setEmail(rs.getString("email"));
+	            user.setPassword(rs.getString("password"));
+	            // Set other user properties as needed
+	            return user;
+	        } else {
+	            return null; // User not found
+	        }
+
+	    } catch (SQLException e) {
+	        throw new DAOException(e);
+	    }
+	}
 
 
 

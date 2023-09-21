@@ -31,18 +31,35 @@ public class UserService {
             throw new ServiceException(e);
         }
     }
-
-    public boolean updateUserDetailsByEmail(String email, String firstname, String lastname, int phoneNumber, int age) throws ServiceException, InvalidUserException {
+    
+    
+    public User getUserById(int userId) throws ServiceException {
         try {
-            if (UserValidator.validateUpdateUserDetails(firstname, lastname, phoneNumber, age)) {
-                return UserDAO.updateUserDetailsByEmail(email, firstname, lastname, phoneNumber, age);
+            User user = UserDAO.getUserById(userId);
+
+            if (user != null) {
+                // User found, you can perform additional operations if needed
+                return user;
             } else {
-                return false; // Validation failed
+                throw new ServiceException("User not found");
             }
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
     }
+    
+
+//    public boolean updateUserDetailsByEmail(String email, String firstname, String lastname, int phoneNumber, int age) throws ServiceException, InvalidUserException {
+//        try {
+//            if (UserValidator.validateUpdateUserDetails(firstname, lastname, phoneNumber, age)) {
+//                return UserDAO.updateUserDetailsByEmail(email, firstname, lastname, phoneNumber, age);
+//            } else {
+//                return false; // Validation failed
+//            }
+//        } catch (DAOException e) {
+//            throw new ServiceException(e);
+//        }
+//    }
 
 
     /**
