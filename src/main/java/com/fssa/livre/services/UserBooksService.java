@@ -14,21 +14,25 @@ public class UserBooksService {
 
 	private static UserBooksDAO userBooksDAO = new UserBooksDAO();
 
-	public static boolean addUserBook(UserBooks userBooks) throws ServiceException {
-		if (userBooks == null) {
+	public static boolean addUserBook(UserBooks user_books) throws ServiceException {
+		if (user_books == null) {
 			throw new ServiceException("Invalid ");
 		}
-		if (userBooks.getUserId() <= 0)
+		if (user_books.getUserId() <= 0)
 			throw new ServiceException("Invalid user book");
-		if (userBooks.getReadBookId() <= 0)
+		if (user_books.getReadBookId() <= 0)
 			throw new ServiceException("Invalid user book data");
 		try {
-			return userBooksDAO.addUserBook(userBooks);
+			return userBooksDAO.addUserBook(user_books);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
 	}
 
+	
+	
+	
+	
 	public static List<UserBooks> getUserBooksByUserId(int userId) throws ServiceException {
 		try {
 			UserBooksDAO userBooksDAO = new UserBooksDAO();
@@ -38,4 +42,15 @@ public class UserBooksService {
 		}
 	}
 
+
+
+
+	  public boolean doesUserHaveBook(int userId, int bookId) throws ServiceException {
+	        try {
+	            // Call the DAO method to check if the user has the book
+	            return UserBooksDAO.isUserBookExists(userId, bookId);
+	        } catch (DAOException e) {
+	            throw new ServiceException("Error checking if the user has the book", e);
+	        }
+	    }
 }

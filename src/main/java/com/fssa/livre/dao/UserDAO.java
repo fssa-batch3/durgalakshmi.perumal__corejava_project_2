@@ -68,7 +68,7 @@ public class UserDAO {
 
 	
 	
-	 public void updateUser(String email, String name, int age, String phoneNumber) throws DAOException {
+	 public static void updateUser(String email, String name, int age, String phoneNumber) throws DAOException {
 	        String updateQuery = "UPDATE user SET name = ?, age = ?, phoneNumber = ? WHERE email = ?";
 	        try (Connection connection = ConnectionDb.getConnection();
 	             PreparedStatement pst = connection.prepareStatement(updateQuery)) {
@@ -85,6 +85,9 @@ public class UserDAO {
 	            throw new DAOException(e);
 	        }
 	    }
+	 
+	 
+	 
 	
 	 public static void updateUserProfile(User user) throws ServiceException {
 	        String updateQuery = "UPDATE user SET name = ?, age = ?, phoneNumber = ? WHERE email = ?";

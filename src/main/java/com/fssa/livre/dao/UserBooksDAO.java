@@ -32,12 +32,27 @@ public class UserBooksDAO {
 	        }
 	    }
 	  
-	  
+	  public static boolean isUserBookExists(int userId, int readBookId) throws DAOException {
+		    String query = "SELECT COUNT(*) FROM user_books WHERE user_id = ? AND readbook_id = ?";
+
+		    try (Connection connection = ConnectionDb.getConnection();
+		         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+		        preparedStatement.setInt(1, userId);
+		        preparedStatement.setInt(2, readBookId);
+
+		        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+		            return resultSet.next() && resultSet.getInt(1) > 0; // Simplified return statement
+		        }
+		    } catch (SQLException e) {
+		        throw new DAOException(e);
+		    }
+		}
 
     
 	  public static List<UserBooks> getUserBooksByUserId(int userId) throws DAOException {
 	        List<UserBooks> userBooksList = new ArrayList<>();
-	        String query = "SELECT * FROM userbooks WHERE user_id = ?";
+	        String query = "SELECT * FROM user_books WHERE user_id = ?";
 
 	        try (Connection connection = ConnectionDb.getConnection();
 	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
