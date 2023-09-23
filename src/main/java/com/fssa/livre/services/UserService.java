@@ -31,10 +31,7 @@ public class UserService {
             throw new ServiceException(e);
         }
     }
-    
-    public void updateUserProfile(User user) throws ServiceException {
-        
-    }
+ 
     
     public User getUserByEmail(String email) throws ServiceException {
         try {
@@ -54,7 +51,15 @@ public class UserService {
 		return 0;
     }
 
-    
+
+    public void updateUserProfile(User user) throws ServiceException {
+        try {
+            // You can add validation here if needed before calling the DAO
+            UserDAO.updateUserProfile(user);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
     public User getUserById(int userId) throws ServiceException {
         try {
             User user = UserDAO.getUserById(userId);

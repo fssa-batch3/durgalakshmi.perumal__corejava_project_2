@@ -68,15 +68,14 @@ public class UserDAO {
 
 	
 	
-	 public static void updateUser(String email, String name, int age, String phoneNumber) throws DAOException {
+	 public static void updateUser(String name, int age, long phoneNumber) throws DAOException {
 	        String updateQuery = "UPDATE user SET name = ?, age = ?, phoneNumber = ? WHERE email = ?";
 	        try (Connection connection = ConnectionDb.getConnection();
 	             PreparedStatement pst = connection.prepareStatement(updateQuery)) {
 	            pst.setString(1, name);
 	            pst.setInt(2, age);
-	            pst.setString(3, phoneNumber);
-	            pst.setString(4, email);
-
+	            pst.setLong(3, phoneNumber);
+	         
 	            int rowsUpdated = pst.executeUpdate();
 	            if (rowsUpdated != 1) {
 	                throw new DAOException("Failed to update user information");

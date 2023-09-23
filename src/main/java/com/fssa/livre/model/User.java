@@ -92,19 +92,24 @@ public class User {
 		this.userId = userId;
 		this.email = email;
 	}
-	//constructor
+	
 	public User() {
-		super();
-		this.email = email;
-		this.password = password;
+		
 	}
+	
+	//constructor
+//	public User() {
+//		super();
+//		this.email = email;
+//		this.password = password;
+//	}
 	// Generates a string representation of the User object.
-	@Override
-	public String toString() { 
-		return "User [email=" + email + ", password=" + password + ", getEmail()=" + getEmail() + ", getPassword()="
-				+ getPassword() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
+//	@Override
+//	public String toString() { 
+//		return "User [email=" + email + ", password=" + password + ", getEmail()=" + getEmail() + ", getPassword()="
+//				+ getPassword() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+//				+ super.toString() + "]";
+//	}
 
 
 
