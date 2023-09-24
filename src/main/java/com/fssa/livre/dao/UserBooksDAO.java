@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.fssa.livre.dao.exception.DAOException;
 import com.fssa.livre.model.Readbooks;
+import com.fssa.livre.model.User;
 import com.fssa.livre.model.UserBooks;
 import com.fssa.livre.util.ConnectionDb;
 
@@ -32,6 +33,27 @@ public class UserBooksDAO {
 	        }
 	    }
 	  
+	  
+	  public void updateUserBook(int userId, int bookId, long duration, String status) throws DAOException {
+	        String updateQuery = "UPDATE user_books SET duration = ?, status = ? WHERE user_id = ? AND readbook_id = ?";
+
+	        try (Connection connection = ConnectionDb.getConnection();
+	             PreparedStatement pst = connection.prepareStatement(updateQuery)) {
+	            pst.setLong(1, duration);
+	            pst.setString(2, status);
+	            pst.setInt(3, userId);
+	            pst.setInt(4, bookId);
+
+	            int rowsUpdated = pst.executeUpdate();
+
+	            if (rowsUpdated == 0) {
+	                throw new DAOException("Failed to update user book.");
+	            }
+	        } catch (SQLException e) {
+	            throw new DAOException(e);
+	        }
+	    }
+		  
 	  public static boolean isUserBookExists(int userId, int readBookId) throws DAOException {
 		    String query = "SELECT COUNT(*) FROM user_books WHERE user_id = ? AND readbook_id = ?";
 

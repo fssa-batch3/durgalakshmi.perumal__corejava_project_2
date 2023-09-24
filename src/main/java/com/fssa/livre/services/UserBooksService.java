@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.fssa.livre.dao.ReadbooksDAO;
 import com.fssa.livre.dao.UserBooksDAO;
+import com.fssa.livre.dao.UserDAO;
 import com.fssa.livre.dao.exception.DAOException;
 import com.fssa.livre.model.Readbooks;
+import com.fssa.livre.model.User;
 import com.fssa.livre.model.UserBooks;
 import com.google.protobuf.ServiceException;
 
@@ -29,7 +31,13 @@ public class UserBooksService {
 		}
 	}
 
-	
+	 public void updateUserBook(int userId, int bookId, long duration, String status) throws ServiceException {
+	        try {
+	            userBooksDAO.updateUserBook(userId, bookId, duration, status);
+	        } catch (DAOException e) {
+	            throw new ServiceException(e);
+	        }
+	    }
 	
 	
 	
@@ -41,8 +49,6 @@ public class UserBooksService {
 			throw new ServiceException(e);
 		}
 	}
-
-
 
 
 	  public boolean doesUserHaveBook(int userId, int bookId) throws ServiceException {

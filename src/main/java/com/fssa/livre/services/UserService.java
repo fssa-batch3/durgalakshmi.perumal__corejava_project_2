@@ -33,7 +33,7 @@ public class UserService {
     }
  
     
-    public User getUserByEmail(String email) throws ServiceException {
+    public static User getUserByEmail(String email) throws ServiceException {
         try {
             return UserDAO.getUserByEmail(email);
         } catch (DAOException e) {
