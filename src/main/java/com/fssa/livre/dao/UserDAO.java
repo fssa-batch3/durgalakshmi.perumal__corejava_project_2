@@ -46,6 +46,25 @@ public class UserDAO {
 	    }
 	    return null;
 	}
+	
+	public boolean isUserRegistered(String email) throws DAOException {
+	    String selectQuery = "SELECT COUNT(*) FROM user WHERE email = ?";
+	    try (Connection connection = ConnectionDb.getConnection();
+	         PreparedStatement pst = connection.prepareStatement(selectQuery);) {
+	        pst.setString(1, email);
+
+	        ResultSet rs = pst.executeQuery();
+
+	        if (rs.next()) {
+	            int count = rs.getInt(1);
+	            return count > 0; // If count is greater than 0, the user is registered
+	        }
+
+	    } catch (SQLException e) {
+	        throw new DAOException(e);
+	    }
+	    return false; // If no user found, return false
+	}
 
 	
 	public static int getUserIdByEmail(String email) throws DAOException {

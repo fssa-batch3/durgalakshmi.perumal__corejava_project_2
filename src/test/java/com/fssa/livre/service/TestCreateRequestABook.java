@@ -26,10 +26,10 @@ public class TestCreateRequestABook {
 	        // Assert
 	        assertTrue(result);
 	    } catch (Exception e) {
-	        e.printStackTrace();
-	        fail();
+	        fail(e.getMessage());
 	    }
 	}
+
 
      
 

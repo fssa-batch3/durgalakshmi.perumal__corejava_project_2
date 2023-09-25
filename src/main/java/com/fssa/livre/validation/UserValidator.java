@@ -18,7 +18,7 @@ public class UserValidator {
 	@SuppressWarnings("null")
 	public static boolean validUser(User user) throws InvalidUserException {
 		if (user == null)
-			throw new InvalidUserException("User details are invalid");
+			throw new InvalidUserException("User details are invalid, Please register!");
 		
 		 validateEmail(user.getEmail());
 		 return validatePassword(user.getPassword()); 

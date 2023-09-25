@@ -2,7 +2,7 @@ package com.fssa.livre.model;
 
 public class UserRequestABook {
     private int requestId;
-    private int userId;
+    private String email;
     private String bookName;
     private String imageUrl;
     private String description;
@@ -10,19 +10,29 @@ public class UserRequestABook {
 
 
 
-    public UserRequestABook() {
-        // Default constructor
-    }
+    public UserRequestABook(String email, String bookName, String imageUrl, String description, String status) {
+      }
 
-    public UserRequestABook(int requestId, int userId, String bookName, String imageUrl, String description, String status) {
+    public UserRequestABook() {
         this.requestId = requestId;
-        this.userId = userId;
+        this.email = email;
         this.bookName = bookName;
         this.imageUrl = imageUrl;
         this.description = description;
         this.status = status;
     }
 
+    
+
+    public UserRequestABook( String email, String bookName, String imageUrl, String description) {
+        this.email = email;
+        this.bookName = bookName;
+        this.imageUrl = imageUrl;
+        this.description = description;
+       
+    }
+    
+    
     public int getRequestId() {
         return requestId;
     }
@@ -31,12 +41,12 @@ public class UserRequestABook {
         this.requestId = requestId;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getemail() {
+        return email;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setemail(String email) {
+        this.email = email;
     }
 
     public String getBookName() {
