@@ -23,30 +23,41 @@ public class UserRequestABookService {
 	            return false;
 	        }
 	    }
-//	    
-//	    public List<UserRequestABook> getBookRequestsForLoggedInUser(String loggedInUserEmail) throws ServiceException {
-//	        try {
-//	            // Retrieve the user's ID based on the email
-//	            int userId = userDao.getUserIdByEmail(loggedInUserEmail);
-//
-//	            // Replace this with your actual database query to retrieve book requests for the user
-//	            List<UserRequestABook> bookRequests = UserRequestABookDAO.getBookRequestsForUser(userId);
-//
-//	            return bookRequests;
-//	        } catch (DAOException e) {
-//	            // Handle DAOException or rethrow as ServiceException
-//	            throw new ServiceException(e);
-//	        }
-//	    }
-//	    
-	    // Define a method to get all book requests
+	    
+	    private UserRequestABookDAO UserDao; 
+
+	    public UserRequestABookService(UserRequestABookDAO userDao) {
+	        this.userDao = userDao;
+	    }
+	    public static List<UserRequestABook> getBookRequestsForLoggedInUser(String loggedInUserEmail) throws ServiceException {
+	        try {
+	            List<UserRequestABook> bookRequests = UserRequestABookDAO.getBookRequestsForUser(loggedInUserEmail);
+
+	            return bookRequests;
+	        } catch (DAOException e) {
+	            throw new ServiceException(e);
+	        }
+	    }
+
+	    public boolean updateDeclineStatus(String requestId, String newStatus) {
+	        UserRequestABookDAO userRequestABookDAO = new UserRequestABookDAO();
+
+	        return userRequestABookDAO.updateAcceptStatus(requestId, newStatus);
+	    }
+	    
+	    
+	    public boolean updateAcceptStatus(String requestId, String newStatus) {
+	        UserRequestABookDAO userRequestABookDAO = new UserRequestABookDAO();
+
+	        return userRequestABookDAO.updateAcceptStatus(requestId, newStatus);
+	    }
+	    
 	    public static List<UserRequestABook> getAllBookRequests() {
 	        try {
-	            // Call the DAO method to fetch all book requests
 	            return userDao.getAllBookRequests();
 	        } catch (DAOException e) {
 	            e.printStackTrace();
-	            return null; // Handle the exception as needed
+	            return null; 
 	        }
 	    }
 	}

@@ -35,8 +35,42 @@ public class UserRequestABookDAO {
         }
     }
 
+    public boolean updateAcceptStatus(String requestId, String newStatus) {
+        String updateQuery = "UPDATE book_requests SET status = ? WHERE id = ?";
+
+        try (Connection connection = ConnectionDb.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+            preparedStatement.setString(1, newStatus);
+            preparedStatement.setString(2, requestId);
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0; 
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    public boolean updateDeclineStatus(int requestId, String newStatus, String adminReason) {
+        String updateQuery = "UPDATE book_requests SET status = ? WHERE id = ?";
+
+        try (Connection connection = ConnectionDb.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+        	  preparedStatement.setInt(1, requestId);
+            preparedStatement.setString(2, newStatus);
+           
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public static int getUserIdByEmail(String email) throws DAOException {
-        String selectQuery = "SELECT user_id FROM your_user_table WHERE email = ?";
+        String selectQuery = "SELECT user_id FROM user WHERE email = ?";
         try (Connection connection = ConnectionDb.getConnection();
              PreparedStatement pst = connection.prepareStatement(selectQuery)) {
             pst.setString(1, email);
@@ -54,32 +88,37 @@ public class UserRequestABookDAO {
     }
     
     
-//    public List<UserRequestABook> getBookRequestsForUser(int userId) throws DAOException {
-//        List<UserRequestABook> bookRequests = new ArrayList<>();
-//
-//        String selectQuery = "SELECT * FROM book_requests WHERE user_id = ?";
-//
-//        try (Connection connection = ConnectionDb.getConnection();
-//             PreparedStatement pst = connection.prepareStatement(selectQuery)) {
-//            pst.setInt(1, userId);
-//
-//            try (ResultSet rs = pst.executeQuery()) {
-//                while (rs.next()) {
-//                    int requestId = rs.getInt("request_id");
-//
-//                    UserRequestABook bookRequest = new UserRequestABook(requestId, userId, );
-//
-//                    bookRequests.add(bookRequest);
-//                }
-//            }
-//        } catch (SQLException e) {
-//            throw new DAOException(e);
-//        }
-//
-//        return bookRequests;
-//    }
-//    
-    
+    public static List<UserRequestABook> getBookRequestsForUser(String email) throws DAOException {
+        List<UserRequestABook> bookRequests = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM book_requests WHERE email = ?";
+
+        try (Connection connection = ConnectionDb.getConnection();
+             PreparedStatement pst = connection.prepareStatement(selectQuery)) {
+            pst.setString(1, email);
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    int requestId = rs.getInt("id");
+                    String userEmail = rs.getString("email");
+                    String bookName = rs.getString("book_name");
+                    String imageUrl = rs.getString("image_url");
+                    String status = rs.getString("status");
+                    String declineReason = rs.getString("admin_reason");
+                    String description = rs.getString("description");
+
+                    // Create a UserRequestABook object and add it to the list
+                    UserRequestABook bookRequest = new UserRequestABook(requestId, userEmail, bookName, imageUrl, status, declineReason, description);
+                    bookRequests.add(bookRequest);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+
+        return bookRequests;
+    }
+
     public List<UserRequestABook> getAllBookRequests() throws DAOException {
         List<UserRequestABook> bookRequests = new ArrayList<>();
 
@@ -90,17 +129,15 @@ public class UserRequestABookDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                // Retrieve data from the result set and create BookRequest objects
+                int requestId = rs.getInt("id"); 
                 String email = rs.getString("email");
                 String bookName = rs.getString("book_name");
                 String imageUrl = rs.getString("image_url");
                 String description = rs.getString("description");
                 String status = rs.getString("status");
 
-                // Create a BookRequest object
-                UserRequestABook bookRequest = new UserRequestABook(email, bookName, imageUrl, description, status);
+                UserRequestABook bookRequest = new UserRequestABook(requestId, email, bookName, imageUrl, description, status);
 
-                // Add the book request to the list
                 bookRequests.add(bookRequest);
             }
         } catch (SQLException e) {
@@ -109,4 +146,5 @@ public class UserRequestABookDAO {
 
         return bookRequests;
     }
+
 }

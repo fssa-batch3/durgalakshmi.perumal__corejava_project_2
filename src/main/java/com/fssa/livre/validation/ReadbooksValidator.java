@@ -80,27 +80,7 @@ public class ReadbooksValidator {
 	    return true;
 	}
 
-	/**
-	 * Validates a book category based on predefined categories.
-	 *
-	 * @param category The book category to be validated.
-	 * @return True if the book category is valid, false otherwise.
-	 */
-	public static boolean validateReadBookcategory(String category) throws InvalidBooksException {
 
-		if (category == null)
-			throw new InvalidBooksException("The book name should not be null");
-		if (category.trim().isEmpty()) {
-			throw new InvalidBooksException("The book name is should not be empty");
-		}
-		String bookcategory = category.trim().toUpperCase();
-		if ("ADVENTURETHRILLERROMANTICCOMEDYCLASSICHORRORDEVOTIONAL".contains(bookcategory)) {
-			return true;
-		} else {
-			throw new InvalidBooksException("The book category must be adventure|thriller|romantic|comedy|classic|horror|devotional");
-		}
-
-	}
 
 	/**
 	 * Validates a book ID to ensure it is positive.
@@ -149,13 +129,13 @@ public class ReadbooksValidator {
 	 */
 	public static boolean validEditRbooks(Readbooks readbooks) throws InvalidBooksException {
 		return readbooks != null && validateReadBookName(readbooks.getBookname())
-				&& validateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink()) && validateId(readbooks.getReadbookid()) && validateReadBookPdf(readbooks.getPdflink()) ;
+				&& validateReadBookImage(readbooks.getImagelink()) && validateId(readbooks.getReadbookid()) && validateReadBookPdf(readbooks.getPdflink()) ;
 		
 	}
 	
 	public static boolean validRbooks(Readbooks readbooks) throws InvalidBooksException {
 		return readbooks != null && validateReadBookName(readbooks.getBookname())
-				&& validateReadBookcategory(readbooks.getCategory()) && validateReadBookImage(readbooks.getImagelink())  && validateReadBookPdf(readbooks.getPdflink()) ;
+				&& validateReadBookImage(readbooks.getImagelink())  && validateReadBookPdf(readbooks.getPdflink()) ;
 		
 	}
 }
