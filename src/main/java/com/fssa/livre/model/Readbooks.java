@@ -18,7 +18,7 @@ public class Readbooks {
 
     public String getImagelink() { 
         return imagelink;
-    }
+    } 
 
     public void setImagelink(String imagelink) {
         this.imagelink = imagelink;

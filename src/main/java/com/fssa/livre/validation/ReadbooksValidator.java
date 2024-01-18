@@ -80,7 +80,10 @@ public class ReadbooksValidator {
 	    return true;
 	}
 
-
+    //end od add readbooks
+	
+	
+	
 
 	/**
 	 * Validates a book ID to ensure it is positive.
@@ -98,26 +101,6 @@ public class ReadbooksValidator {
 		}
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * Validates the details of a Readbooks object.

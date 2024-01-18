@@ -30,7 +30,7 @@ public class UserDAO {
 	        pst.setString(1, email);
 
 	        ResultSet rs = pst.executeQuery();
-
+ 
 	        if (rs.next()) {
 	            User user = new User();
 	            user.setEmail(rs.getString("email"));
