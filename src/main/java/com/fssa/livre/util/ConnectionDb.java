@@ -2,26 +2,131 @@ package com.fssa.livre.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionDb {
     // Connect to the database
-    public static Connection getConnection() throws SQLException {
-        Connection connection = null;
+    public static Connection getConnection() {
+    	
+    	String dbUrl = "jdbc:mysql://164.52.216.41:3306/durgalakshmi_perumal_corejava_project";
+    	String dbUser = "koANCsD6BzM2";
+    	String dbPassword = "aaf6cf5c-c149-4af3-8b7a-b43ec79d070b";
+    	
+    	try {
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    		return DriverManager.getConnection(dbUrl,dbUser,dbPassword);
+    				}
+    		catch (Exception e) {
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbUrl = "jdbc:mysql://localhost:3306/web_project";
-            String dbUser = "root";
-            String dbPassword = "123456";
+    			e.printStackTrace();
 
-            connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-        } catch (SQLException e) {
-            throw new RuntimeException("Unable to connect to the database", e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Database driver class is not found", e);
-        }
+    			throw new RuntimeException(e);
 
-        return connection;
+    		}
+
+    		
+
+    	}
+
+
+
+    	/**
+
+    	 * 
+
+    	 * @param connection
+
+    	 * @param ps
+
+    	 */
+
+    	public static void close(Connection connection, PreparedStatement ps) {
+
+    		try {
+
+    			if (ps != null) {
+
+    				ps.close();
+
+    			}
+
+    			if (connection != null) {
+
+    				connection.close();
+
+    			}
+
+    		} catch (SQLException e) {
+
+    			e.printStackTrace();
+
+    		}
+
+    	}
+
+
+
+    	/**
+
+    	 * 
+
+    	 * @param connection
+
+    	 * @param ps
+
+    	 * @param rs
+
+    	 */
+
+
+
+    	public static void close(Connection connection, PreparedStatement ps, ResultSet rs) {
+
+    		try {
+
+    			if (rs != null) {
+
+    				rs.close();
+
+    			}
+
+    			if (ps != null) {
+
+    				ps.close();
+
+    			}
+
+    			if (connection != null) {
+
+    				connection.close();
+
+    			}
+
+
+
+    		} catch (SQLException e) {
+
+    			e.printStackTrace();
+
+    		}
+
+
+
+    	}
+
+
+
     }
-}
+
+
+
+
+
+
+
+
+
+
+
